@@ -8,7 +8,7 @@
 <meta http-equiv="REFRESH" content="5400" />
 <meta name="description" content="" />
 <meta name="keywords" content="" />		
-<title> - </title>
+<title>Cafe IT - Cafe IT</title>
 
 </head>
 
@@ -93,21 +93,29 @@ $(function() {
             <img src="http://localhost:81/cafeit/view/skin1/image/logo.png" alt="" />
         </div>
     
-        <div class="ben-left" id="ben-site-title">
-            <h1></h1>
+        <div class="ben-right" id="ben-searchform">
+            <img src="http://localhost:81/cafeit/view/skin1/image/seach.png" alt="" />
         </div>
     
         <div class="clearer">&nbsp;</div>
         
-        <div class="ben-navigation">
-    
-            <ul id="ben-main-nav">
-                <li><a class='current-tab' href='http://localhost:81/cafeit/'>Trang chủ</a></li><li><a  href='http://localhost:81/cafeit/gioi-thieu.html'>Giới thiệu</a></li><li><a  href='http://localhost:81/cafeit/hoi-nhom.html'>Hội nhóm</a><ul><li><a  href='http://localhost:81/cafeit/hd.html'>HD</a></li><li><a  href='http://localhost:81/cafeit/laser.html'>Laser</a></li></ul></li><li><a  href='http://localhost:81/cafeit/san-pham.html'>Sản phẩm</a><ul><li><a  href='http://localhost:81/cafeit/laptop.html'>Laptop</a></li><li><a  href='http://localhost:81/cafeit/desktop.html'>Desktop</a></li><li><a  href='http://localhost:81/cafeit/cac-san-pham-khac.html'>Các sản phẩm khác</a></li></ul></li><li><a  href='http://localhost:81/cafeit/tin-tuc-su-kien.html'>Tin tức sự kiện</a></li><li><a  href='http://localhost:81/cafeit/quyen-loi.html'>Quyền lợi</a><ul><li><a  href='http://localhost:81/cafeit/ve-sinh-kiem-tra-may-tinh.html'>Vệ sinh, kiểm tra, máy tính</a></li><li><a  href='http://localhost:81/cafeit/tu-van-dinh-gia.html'>Tư vấn, định giá</a></li><li><a  href='http://localhost:81/cafeit/hoa-hong.html'>Hoa hồng</a></li></ul></li><li><a  href='http://localhost:81/cafeit/lien-he.html'>Liên hệ</a></li>            </ul>
-    
-            <div class="clearer">&nbsp;</div>
-    
-        </div>
         
+        
+    </div>
+    <div class="ben-navigation">
+    
+        <ul id="ben-main-nav">
+            <li><a href="http://localhost:81/cafeit/"><div class="main">Trang chủ</div><div class="sub">Homepage</div></a></li>
+            <li><a href="http://localhost:81/cafeit/gioi-thieu.html"><div class="main">Giới thiệu</div><div class="sub">About us</div></a></li>
+            <li><a href="http://localhost:81/cafeit/hoi-nhom.html"><div class="main">Hội nhóm</div><div class="sub">Community</div></a></li>
+            <li><a href="http://localhost:81/cafeit/san-pham.html"><div class="main">Sản phẩm</div><div class="sub">Our products</div></a></li>
+            <li><a href="http://localhost:81/cafeit/tin-tuc-su-kien.html"><div class="main">Tin tức & sự kiện</div><div class="sub">News & Events</div></a></li>
+            <li><a href="http://localhost:81/cafeit/quyen-loi.html"><div class="main">Quyền lợi</div><div class="sub"> Customer Services</div></a></li>
+            <li><a href="http://localhost:81/cafeit/lien-he.html"><div class="main">Liên hệ</div><div class="sub">Contact us</div></a></li>
+        </ul>
+
+        <div class="clearer">&nbsp;</div>
+
     </div>
 </div>
 

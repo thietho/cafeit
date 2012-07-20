@@ -26,9 +26,9 @@ html {
 }
 
 body {
-	background: #FFF;
-	color: #444;
-	font: normal 75% Arial, Tahoma, Helvetica, sans-serif;
+	background: #060606;
+	color: #fff;
+	font: normal 75%  Tahoma,Arial, Helvetica, sans-serif;
 	line-height: 1.5;
 }
 
@@ -364,7 +364,7 @@ input.ben-button:active {border-style: inset;}
 /* Wrapper */
 #ben-main {
 	margin: 0 auto;
-	width: 1000px;
+	width: 940px;
 }
 
 
@@ -373,23 +373,27 @@ input.ben-button:active {border-style: inset;}
 
 /*---------- HEADER AREA ------------*/
 /* Header */
-#ben-header {padding-top: 0px;border-bottom: 1px solid #DDD;}
+#ben-header {padding-top: 0px;}
 
 /* Optional Top */
 #ben-top{
 	margin: 0 auto;
-	width: 1000px;
+	width: 940px;
 	padding-bottom: 0px;
+	background:url(../image/bg-header.png) no-repeat;
+	height:88px;
 }
 
 
 /* Logo */
 #ben-logo {	
-	padding: 5px 15px 5px 0;
-	margin-right: 40px;
+	margin-top:30px;
 }
 #ben-logo img {}
-
+#ben-searchform
+{
+	margin-top:50px;
+}
 #ben-site-title{padding-top:30px}
 
 /* Splash */
@@ -399,6 +403,11 @@ input.ben-button:active {border-style: inset;}
 
 /* Main Menu */
 /* Main Level 1 */
+.ben-navigation
+{
+	border-bottom:#7f7f7f solid thin;
+	background:url(../image/bg-main-menu.png) repeat-x;
+}
 #ben-main-nav, #ben-main-nav ul{
 margin:0;
 padding:0;
@@ -408,14 +417,21 @@ position:relative;
 line-height:1.5em; 
 z-index:100;
 }
-
+#ben-main-nav .main
+{
+	color:#000;
+	text-transform:uppercase;	
+}
+#ben-main-nav .sub
+{
+	font-size:0.9em;
+}
 #ben-main-nav a{
 display:block;
-padding:3px 5px;
-border:1px solid #CCCCCC;
-color:#fff;
+padding:17px 30px;
+
+
 text-decoration:none;
-background-color:#CCCCCC;
 }
 
 #ben-main-nav a:hover{
@@ -426,7 +442,12 @@ color:#333;
 #ben-main-nav li{
 float:left;
 position:relative;
-margin-left:5px;
+background:url(../image/bg-main-menu.png) repeat-x;
+height:68px;
+border-right:#7f7f7f solid thin;
+}
+#ben-main-nav li:last-child{
+	border:none;
 }
 
 #ben-main-nav a.current-tab{
@@ -485,7 +506,7 @@ display:block;
 
 
 /*---------- BODY AREA ------------*/
-#ben-content {margin: 24px auto; width:1000px}
+#ben-content {margin: 24px auto; width:940px}
 
 #ben-maincontent{}
 .ben-two-columns #ben-maincontent{width: 750px;}
