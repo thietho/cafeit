@@ -200,9 +200,9 @@ class ControllerCorePostcontent extends Controller
 		if($route == "module/product")
 		{
 			$this->data['hasProperties'] = true;
-			$this->data['hasPrice'] = false;
+			$this->data['hasPrice'] = true;
 			$this->data['hasSubInfor'] = false;
-			$this->data['hasProductPrice'] = true;
+			$this->data['hasProductPrice'] = false;
 			$this->data['hasSource'] = false;
 			$this->data['hasTabComment'] = true;
 		}

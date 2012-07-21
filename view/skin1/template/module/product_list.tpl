@@ -40,9 +40,9 @@ $('#order').val('<?php echo $_GET["order"]?>');
                         </div>
                         <?php } ?>
                         <?php if(in_array("sanphammoi",$media['properties'])){ ?>
-                        <div id="ben-icon-new" class="ben-icon">
+                        <!--<div id="ben-icon-new" class="ben-icon">
                             <img src="<?php echo HTTP_SERVER.DIR_IMAGE?>icon/ico-new.png" />
-                        </div>
+                        </div>-->
                         <?php } ?>
                         <?php if($media['imagethumbnail'] !=""){ ?>
                         <a class="islink" href="<?php echo $media['link']?>"><img src='<?php echo $media['imagethumbnail']?>' class='ben-center' /></a>
@@ -53,9 +53,9 @@ $('#order').val('<?php echo $_GET["order"]?>');
                 <tr>
                     <td>
                         <div align="center"><a href="<?php echo $media['link']?>"><h6><?php echo $media['title']?></h6></a></div>
-                        <div align="center"><?php echo $this->string->numberFormate($media['price'])?> <?php echo $this->document->setup['Currency']?></div>
+                        <div align="center"><a href="<?php echo $media['link']?>"><?php echo $this->string->numberFormate($media['price'])?> <?php echo $this->document->setup['Currency']?></a></div>
                         <div align="center">
-                            <a href="<?php echo $media['link']?>">Chi tiết</a><!-- || <a onclick="cart.add('<?php echo $media['mediaid']?>')">Đặt hàng</a>-->
+                            
                         </div>
                     </td>
                 </tr>

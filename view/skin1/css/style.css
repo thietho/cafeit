@@ -63,7 +63,7 @@ h1 img, h2 img, h3 img, h4 img, h5 img, h6 img {margin: 0;}
 
 /* Links */
 a {
-	color: #000000;
+	color: #999999;
 	text-decoration: none;
 	cursor:pointer;
 }
@@ -169,18 +169,28 @@ img.ben-alignright, img.ben-right {margin: 0 0 1em 1.5em;}
    Separators 
 ------------------------------------------------------------------- */
 .ben-content-separator, .ben-item-separator, .ben-hline {
-	background: #E5E5E5;
+	background: #a9d018;
 	clear: both;
 	color: #FFE;
 	display: block;
 	font-size: 0;
 	line-height: 0;
-	height: 1px;	
+	height: 1px;
 }
 .ben-content-separator {margin: 32px 0;}
 .ben-item-separator {margin-bottom: 15px;}
-.ben-hline {margin-bottom: 5px;}
+.ben-hline {margin: 10px;}
 
+.ben-line
+{
+	background: #d6d6d6;
+	clear: both;
+	color: #FFE;
+	display: block;
+	font-size: 0;
+	line-height: 0;
+	height: 1px;
+}
 
 
 
@@ -428,7 +438,7 @@ z-index:100;
 }
 #ben-main-nav a{
 display:block;
-padding:17px 30px;
+padding:16px 30px;
 
 
 text-decoration:none;
@@ -506,7 +516,7 @@ display:block;
 
 
 /*---------- BODY AREA ------------*/
-#ben-content {margin: 24px auto; width:940px}
+#ben-content {margin: 0 auto; width:940px;background:#fff;color:#999999;}
 
 #ben-maincontent{}
 .ben-two-columns #ben-maincontent{width: 750px;}
@@ -557,13 +567,13 @@ display:block;
 
 
 /* Sections */
-.ben-section {margin-bottom: 10px; border:1px solid #DDDDDD}
+.ben-section {margin-bottom: 10px;}
 .ben-sidebar .ben-section{}
 #ben-maincontent .ben-section{}
 
-.ben-section-content{padding:5px 15px}
+.ben-section-content{}
 .ben-sidebar .ben-section-content{padding:5px}
-#ben-maincontent .ben-section-content{padding:5px 10px}
+#ben-maincontent .ben-section-content{}
 
 .ben-section-title {
 	background-color: #F9F9F9;
@@ -691,7 +701,7 @@ ul#menu li ul li div:hover {
 }
 .container
 {
-	margin-bottom:10px;	
+	padding:10px 0;	
 }
 
 .ben-editor td
@@ -714,4 +724,34 @@ ul#menu li ul li div:hover {
 {
 	padding:10px;	
 }
-
+#ben-home-infor
+{
+	padding-bottom:10px;	
+}
+#ben-home-infor a
+{
+	font-size:0.9em;
+}
+#ben-home-infor h3
+{
+	margin-bottom:15px;	
+}
+.ben-home-tintucmoi
+{
+	margin-left:20px;
+	width:315px;	
+}
+.ben-viewmore
+{
+	font-weight:bold;
+	color:#8aa40f;	
+}
+.ben-home-news-item
+{
+	margin:10px 0;	
+}
+.ben-home-gioithieu
+{
+	width:200px;
+	margin-left:20px;	
+}

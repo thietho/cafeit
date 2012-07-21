@@ -61,6 +61,7 @@ class ControllerModuleBlock extends Controller
 					'summary' => html_entity_decode( $media['summary']),
 					'eventdate' => $media['eventdate'],
 					'eventtime' => $media['eventtime'],
+					'price' => $media['price'],
 					'imagethumbnailpng' => $imagethumbnailpng,
 					'imagethumbnail' => $imagethumbnail,
 					'statusdate' => $this->date->formatMySQLDate($media['statusdate'], 'longdate', "/"),

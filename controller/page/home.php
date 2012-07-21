@@ -3,7 +3,7 @@ class ControllerPageHome extends Controller
 {
 	function __construct() 
 	{
-		$this->iscache = true;
+		//$this->iscache = true;
 	 	$arr=array();
 		foreach($_GET as $key => $val)
 			$arr[] = $key."=".$val;
@@ -16,8 +16,8 @@ class ControllerPageHome extends Controller
 			//Banner home
 			$template = array(
 						  'template' => "home/banner.tpl",
-						  'width' => 548,
-						  'height' =>548
+						  'width' => 920,
+						  'height' =>300
 						  );
 		
 			$arr = array("bannerhome",0,"",$template);
@@ -25,13 +25,13 @@ class ControllerPageHome extends Controller
 			//San pham moi
 			$template = array(
 						  'template' => "module/product_list.tpl",
-						  'width' => 150,
-						  'height' =>150,
+						  'width' => 147,
+						  'height' =>147,
 						  'paging' => false,
 						  'sorting' =>false
 						  );
 			
-			$medias = $this->getProduct();
+			$medias = $this->getProduct('sanphammoi');
 			
 			$arr = array("",6,"",$template,$medias);
 			$this->data['producthome'] = $this->loadModule('module/productlist','index',$arr);
@@ -39,7 +39,7 @@ class ControllerPageHome extends Controller
 			/*$arr = array("gioithieu");
 			$this->data['producthome'] = $this->loadModule('module/information','index',$arr);*/
 			//
-			$this->loadSiteBar();
+			//$this->loadSiteBar();
 			$this->document->title = $this->document->setup['Title'] ." - ". $this->document->setup['Slogan'];
 		}
 		
@@ -67,7 +67,7 @@ class ControllerPageHome extends Controller
 		$this->data['rightsitebar']['question'] = $this->loadModule('sitebar/question');
 	}
 	
-	function getProduct()
+	function getProduct($status)
 	{
 		$this->load->model('core/sitemap');
 		$this->load->model('core/media');
@@ -78,6 +78,7 @@ class ControllerPageHome extends Controller
 		$queryoptions['mediaparent'] = '%';
 		$queryoptions['mediatype'] = '%';
 		$options['refersitemap'] = $arrsitemapid;
+		$options['groupkeys'] = $status;
 		$data = $this->model_core_media->getPaginationList($options, $step=0, $to=9);
 		
 		return $data;
