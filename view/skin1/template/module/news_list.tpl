@@ -1,4 +1,4 @@
-<div class="bb"><?php echo $sitemap['sitemapname'] ?></div>
+
 <?php foreach($medias as $media) {?>
 <div class="ben-post">
 	<?php if($media['imagethumbnail'] !=""){ ?>

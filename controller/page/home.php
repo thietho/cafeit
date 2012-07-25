@@ -36,8 +36,21 @@ class ControllerPageHome extends Controller
 			$arr = array("",6,"",$template,$medias);
 			$this->data['producthome'] = $this->loadModule('module/productlist','index',$arr);
 			
-			/*$arr = array("gioithieu");
-			$this->data['producthome'] = $this->loadModule('module/information','index',$arr);*/
+			
+			$template = array(
+						  'template' => "home/news_list.tpl",
+						  
+						  );
+		
+			$arr = array("tin-tuc-su-kien",2,"Tin tức mới",$template);
+			$this->data['tintucmoi'] = $this->loadModule('module/block','getList',$arr);
+			
+			$template = array(
+						  'template' => "home/gioithieu.tpl",
+						  
+						  );
+			$arr = array($this->member->getSiteId()."gioi-thieu",$template);
+			$this->data['gioithieu'] = $this->loadModule('module/block','showContent',$arr);
 			//
 			//$this->loadSiteBar();
 			$this->document->title = $this->document->setup['Title'] ." - ". $this->document->setup['Slogan'];

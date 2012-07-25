@@ -8,12 +8,13 @@ class ControllerPageDetail extends Controller
 		foreach($_GET as $key => $val)
 			$arr[] = $key."=".$val;
 	 	$this->name ="Pagedetail_".implode("_",$arr);
+		$this->load->model("core/sitemap");
    	}
 	public function index()
 	{
 		if($this->cachehtml->iscacht($this->name) == false)
 		{
-			$this->load->model("core/sitemap");
+			
 			$this->document->sitemapid = $this->request->get['sitemapid'];
 			$siteid = $this->member->getSiteId();
 			
@@ -32,7 +33,15 @@ class ControllerPageDetail extends Controller
 						$this->data['module'] = $this->loadModule('addon/'.$this->document->sitemapid);
 					break;
 					case "group":
-						$this->data['module'] = $this->loadModule('group/'.$this->document->sitemapid);
+						$template = array(
+										  'template' => "group/sitemap_list.tpl",
+										  'width' => 180,
+										  'height' =>180
+										  );
+						$arr = array($this->document->sitemapid,$template);
+						
+						$this->data['module'] = $this->loadModule('group/sitemap','index',$arr);
+						
 					break;
 					case "module/information":
 						$this->data['module'] = $this->loadModule('module/information');
@@ -228,19 +237,23 @@ class ControllerPageDetail extends Controller
 	private function loadSiteBar()
 	{
 		//Left sitebar
-		$arr = array('sanpham');
-		$this->data['leftsitebar']['produtcategory'] = $this->loadModule('sitebar/catalogue','index',$arr);
-		$this->data['leftsitebar']['supportonline'] = $this->loadModule('sitebar/supportonline');
+		$sitemapid = $this->document->sitemapid;
+		$sitemapid=$this->model_core_sitemap->getRoot($sitemapid, $this->member->getSiteId());
+		$arr = array($sitemapid);
+		$child = $this->model_core_sitemap->getListByParent($sitemapid, $this->member->getSiteId());
+		if(count($child))
+			$this->data['leftsitebar']['produtcategory'] = $this->loadModule('sitebar/catalogue','index',$arr);
+		
 		$this->data['leftsitebar']['exchange'] = $this->loadModule('sitebar/exchange');
 		$this->data['leftsitebar']['weblink'] = $this->loadModule('sitebar/weblink');
-		$this->data['leftsitebar']['hitcounter'] = $this->loadModule('sitebar/hitcounter');
+		//$this->data['leftsitebar']['hitcounter'] = $this->loadModule('sitebar/hitcounter');
 		
 		//Rigth sitebar
-		$this->data['rightsitebar']['login'] = $this->loadModule('sitebar/login');
+		/*$this->data['rightsitebar']['login'] = $this->loadModule('sitebar/login');
 		$this->data['rightsitebar']['search'] = $this->loadModule('sitebar/search');
 		$this->data['rightsitebar']['cart'] = $this->loadModule('sitebar/cart');
 		$this->data['rightsitebar']['banner'] = $this->loadModule('sitebar/banner');
-		$this->data['rightsitebar']['question'] = $this->loadModule('sitebar/question');
+		$this->data['rightsitebar']['question'] = $this->loadModule('sitebar/question');*/
 	}
 }
 ?>
