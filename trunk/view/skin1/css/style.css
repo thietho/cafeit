@@ -519,14 +519,14 @@ display:block;
 #ben-content {margin: 0 auto; width:940px;background:#fff;color:#999999;}
 
 #ben-maincontent{}
-.ben-two-columns #ben-maincontent{width: 750px;}
+.ben-two-columns #ben-maincontent{width: 720px;padding:5px;}
 .ben-three-columns #ben-maincontent{width:570px; margin-left:5px;}
 .ben-three-columns-right #ben-maincontent{width:520px; margin-right:20px}
 
 
 /* Sidebar */
 #ben-sidebar{} /*Div chua 2 sidebar*/
-.ben-sidebar{width:210px;}
+.ben-sidebar{width:210px;padding-top:5px}
 
 
 /* Columns */
@@ -577,7 +577,7 @@ display:block;
 
 .ben-section-title {
 	background-color: #F9F9F9;
-	border-top: 2px solid #DDD;
+	
 	color: #7A7A7A;
 	font: bold 1.2em sans-serif;
 	margin-bottom: 5px;
@@ -595,10 +595,32 @@ display:block;
 /*---------- FOOTER AREA ------------*/
 #ben-footer {
 	border-top: 1px solid #DDD;
-	color: #777;
-	padding: 16px 5px 4px;
+	color: #fff;
+	padding: 16px 0px 0px;
 }
-#ben-footer-left {width: 700px;}
+#ben-footer a
+{
+	color:#fff;	
+}
+#ben-footer a:hover
+{
+	color:#fff;	
+}
+#ben-footer-left {}
+#ben-footer-menu ul
+{
+	list-style-type:none;
+	margin:0;
+}
+#ben-footer-menu ul li
+{
+	float:left;	
+	padding:2px 24px;
+}
+#ben-footer-menu ul li a
+{
+	font-weight:bold;	
+}
 #ben-footer-right {
 	width: 459px;
 	text-align: right;
@@ -608,7 +630,7 @@ display:block;
 	padding: 0 3px;
 	color: #BBB;
 }
-#ben-footer a:hover {color: #000;}
+
 .ben-page
 {
 	margin-top:5px;
@@ -752,6 +774,10 @@ ul#menu li ul li div:hover {
 }
 .ben-home-gioithieu
 {
-	width:200px;
+	width:275px;
 	margin-left:20px;	
+}
+.ben-home-quangcao
+{
+	margin-right:10px;	
 }

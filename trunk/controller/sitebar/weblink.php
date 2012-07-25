@@ -7,7 +7,7 @@ class ControllerSitebarWeblink extends Controller
 		$this->load->model("core/sitemap");
 		$this->load->helper('image');
 		
-		$sitemapid = "lienket";
+		$sitemapid = "weblink";
 		$siteid = $this->member->getSiteId();
 		$this->data['sitemap'] = $this->model_core_sitemap->getItem($sitemapid, $siteid);
 		

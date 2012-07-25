@@ -1,4 +1,4 @@
-<div class="bb"><?php echo $sitemap['sitemapname'] ?></div>
+
 <div class="ben-product-list">
     <?php
     if(count($medias))

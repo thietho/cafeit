@@ -288,6 +288,7 @@ class ControllerModuleBlock extends Controller
 		
 		$this->data['media'] = $this->model_core_media->getItem($mediaid);
 		$this->data['media']['imagethumbnail'] = HelperImage::fixsize($this->data['media']['imagepath'], $template['width'], $template['height']);
+		$this->data['media']['summary'] = html_entity_decode($this->data['media']['summary']);
 		$this->data['media']['description'] = html_entity_decode($this->data['media']['description']);
 		$this->data['media']['link'] = $this->document->createLink(str_replace($this->member->getSiteId(),"",$mediaid));
 		
