@@ -177,8 +177,8 @@ class ControllerPageDetail extends Controller
 						{
 							$template = array(
 											  'template' => "module/product_list.tpl",
-											  'width' => 150,
-											  'height' =>150,
+											  'width' => 147,
+											  'height' =>147,
 											  'paging' => true,
 											  'sorting' =>true
 											  );
@@ -239,12 +239,16 @@ class ControllerPageDetail extends Controller
 		//Left sitebar
 		$sitemapid = $this->document->sitemapid;
 		$sitemapid=$this->model_core_sitemap->getRoot($sitemapid, $this->member->getSiteId());
+		if($sitemapid=="")
+		{
+			$sitemapid = "san-pham";
+		}
 		$arr = array($sitemapid);
 		$child = $this->model_core_sitemap->getListByParent($sitemapid, $this->member->getSiteId());
-		if(count($child))
+		if(count($child) )
 			$this->data['leftsitebar']['produtcategory'] = $this->loadModule('sitebar/catalogue','index',$arr);
-		
-		$this->data['leftsitebar']['exchange'] = $this->loadModule('sitebar/exchange');
+
+		//$this->data['leftsitebar']['exchange'] = $this->loadModule('sitebar/exchange');
 		$this->data['leftsitebar']['weblink'] = $this->loadModule('sitebar/weblink');
 		//$this->data['leftsitebar']['hitcounter'] = $this->loadModule('sitebar/hitcounter');
 		

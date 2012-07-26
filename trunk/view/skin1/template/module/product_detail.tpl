@@ -160,13 +160,10 @@ $("#ben-next").click(function(){
                             <?php } ?>
                         </td>
                     </tr>
+                    
                     <tr>
-                    	<td><strong>Nhóm hương:</strong></td>
-                        <td>
-                        	<?php foreach($nhomhuong as $it){ ?>
-                            <?php echo in_array($it['categoryid'],$properties)?$it['categoryname'].'<br />':''; ?>
-                            <?php } ?>
-                        </td>
+                    	<td><strong>Giá:</strong></td>
+                        <td><?php echo $this->string->numberFormate($post['price'])?> <?php echo $this->document->setup['Currency']?></td>
                     </tr>
                 </table>
             	
@@ -190,50 +187,7 @@ $("#ben-next").click(function(){
         <b><?php echo $post['source']?></b>
     </p>
     
-    <div id="listprice">
-        <table>
-            <thead>
-                <tr>
-                    <th>Sẩn phẩm</th>
-                    <th>Giá thị trường</th>
-                    <th>Giá bán</th>
-                    <th>Khuyến mãi</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                
-                <?php if(count($priceproduct)){ ?>
-                <?php foreach($priceproduct as $val){ ?>
-                <tr>
-                    <td>
-                    	<?php echo $val['title']!=""?$val['title']:$post['title'] ?>
-                    	<?php if($val['tenkhuyenmai']){ ?>
-                        <p class="ben-khuyenmai"><a  onclick="xemkhuyenmai('<?php echo $val['makhuyenmai']?>')"><?php echo $val['tenkhuyenmai']?></a></p>
-                        <?php } ?>
-                    </td>
-                    <td class="number">
-                        <?php if($val['thitruong']!=0){ ?>
-                        <?php echo $this->string->numberFormate($val['thitruong'])?> <?php echo $this->document->setup['Currency']?>
-                        <?php } ?>
-                    </td>
-                    <td class="number">
-                        <?php if($val['gia']!=0){ ?>
-                        <?php echo $this->string->numberFormate($val['gia'])?> <?php echo $this->document->setup['Currency']?>
-                        <?php } ?>
-                    </td>
-                    <td class="number">
-                        <?php if($val['khuyenmai']!=0){ ?>
-                        <?php echo $this->string->numberFormate($val['khuyenmai'])?><?php echo $this->document->setup['Currency']?>
-                        <?php } ?>
-                    </td>
-                    <td><input type="button" class="ben-button ben-center" onclick="cart.add('<?php echo $val['mediaid']?>')" value="Đặt hàng"></td>
-                </tr>
-                <?php } ?>
-                <?php } ?>
-            </tbody>
-        </table>
-    </div>
+    
     
     <?php if(count($child)){ ?>
     <div id="subinfo">
@@ -259,8 +213,7 @@ $("#ben-next").click(function(){
     
     <div class="clearer">&nbsp;</div>
 </div>
-<div class=" ben-section-title">Sản phẩm cùng nhãn hiệu</div>
-<?php echo $saphamcungnhanhieu?>
+
 
 <?php echo $comment?>
 <div class=" ben-section-title">Gửi Nhận xét về <?php echo $post['title']?></div>
@@ -370,3 +323,5 @@ function sendComment()
 	);		
 }
 </script>
+<div class=" ben-section-title">Sản phẩm cùng nhãn hiệu</div>
+<?php echo $saphamcungnhanhieu?>

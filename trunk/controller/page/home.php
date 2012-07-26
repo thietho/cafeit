@@ -24,7 +24,7 @@ class ControllerPageHome extends Controller
 			$this->data['bannerhome'] = $this->loadModule('module/block','getList',$arr);
 			//San pham moi
 			$template = array(
-						  'template' => "module/product_list.tpl",
+						  'template' => "home/product_list.tpl",
 						  'width' => 147,
 						  'height' =>147,
 						  'paging' => false,
