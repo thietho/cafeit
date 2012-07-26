@@ -17,6 +17,7 @@ $_['text_none']             = ' --- None --- ';
 $_['text_separator']        = ' &gt; ';
 $_['text_sitemapheader'] = 'SITEMAP MANAGEMENT';
 $_['text_editmodule']='Edit Module';
+$_['text_manufacture']='Manufacture';
 $_['text_status']='Status';
 $_['text_control']='Control';
 $_['text_orderid']='Order Id';

@@ -1,9 +1,4 @@
-<style>
-.product
-{
-	margin:8px 4px;	
-}
-</style>
+
 <div class="ben-product-list">
     <?php
     if(count($medias))

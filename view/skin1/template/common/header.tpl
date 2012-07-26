@@ -5,9 +5,10 @@
         </div>
     
         <div class="ben-right" id="ben-searchform">
-            <img src="<?php echo HTTP_SERVER.DIR_IMAGE?>seach.png" alt="" />
+        	<input type="text" class="ben-text-search" class="ben-right" id="txt_search"/>
+            <img id="btn-search" src="<?php echo HTTP_SERVER.DIR_IMAGE?>btn-search.png" class="ben-right"/>
         </div>
-    
+    	
         <div class="clearer">&nbsp;</div>
         
         
@@ -31,3 +32,10 @@
 </div>
 
 <script src="<?php echo HTTP_SERVER.DIR_JS?>menu.js" language="javascript"></script>
+<script language="javascript">
+$('#btn-search').click(function(e) {
+    var keyword = trim($("#txt_search").val()," ");
+	if(keyword!="")
+		window.location = HTTP_SERVER+"search/keyword/"+keyword+".html";
+});
+</script>

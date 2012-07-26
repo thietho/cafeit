@@ -28,10 +28,10 @@ class ControllerAddonSearch extends Controller
 			$listsitemapid[] = $item['sitemapid'];
 		}
 		
-		/*$arrsitemap = $this->model_core_sitemap->getListByModule('module/register', $siteid);
+		$arrsitemap = $this->model_core_sitemap->getListByModule('module/product', $siteid);
 		foreach($arrsitemap as $item){
 			$listsitemapid[] = $item['sitemapid'];
-		}*/
+		}
 		//$this->document->title .= " - ".$this->data['sitemap']['sitemapname'];
 		$step = (int)$this->request->get['step'];
 		$to = 10;
