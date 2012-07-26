@@ -527,7 +527,10 @@ display:block;
 /* Sidebar */
 #ben-sidebar{} /*Div chua 2 sidebar*/
 .ben-sidebar{width:210px;padding-top:5px}
-
+.ben-sidebar select
+{
+	width:200px;	
+}
 
 /* Columns */
 .ben-col2 {width: 46%;}
@@ -780,4 +783,17 @@ ul#menu li ul li div:hover {
 .ben-home-quangcao
 {
 	margin-right:10px;	
+}
+.sitemap-item
+{
+	width:180px;
+	margin:30px;
+}
+.sitemap-item td
+{
+	text-align:center;	
+}
+.sitemap-item .sitemap-image
+{
+	height:180px;	
 }

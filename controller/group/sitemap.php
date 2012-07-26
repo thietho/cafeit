@@ -16,7 +16,7 @@ class ControllerGroupSiteMap extends Controller
 		{
 			$this->data['data_sitemap'][$key]['imagethumbnailpng'] = HelperImage::resizePNG($sitemap['imagepath'], $template['width'], $template['height']);	
 		}
-		print_r($this->data['data_sitemap']);
+		
 		$this->id="content";
 		$this->template=$template['template'];
 		$this->render();
