@@ -25,7 +25,7 @@ class ModelCoreSitemap extends Model
 								 /*"core/changeskin" => "Change skin",*/
 								 "core/category" => "Quản lý danh mục",
 								 "core/media" => "Quản lý thông tin",
-								 "addon/sitemap" => "Quản lý cấu trúc website",
+								 "core/sitemap" => "Quản lý cấu trúc website",
 								 /*"core/comment" => "Đánh giá",*/
 								/* "addon/order" => "Order management <span id='orderwarring'></span>",
 								 "core/member" => "Member management",*/

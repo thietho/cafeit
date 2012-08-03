@@ -30,7 +30,7 @@ class ControllerSitebarWeblink extends Controller
 			$imagethumbnail = "";
 			if($media['imagepath'] != ""  )
 			{
-				$imagethumbnail = HelperImage::resizePNG($media['imagepath'], 228,228);
+				$imagethumbnail = HelperImage::resizePNG($media['imagepath'], 200,200);
 			}
 			
 			$weblink = $this->model_core_media->getInformation($media['mediaid'], "Link");
