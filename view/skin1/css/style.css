@@ -799,9 +799,13 @@ ul#menu li ul li div:hover {
 }
 .ben-text-search
 {
-	padding:2px;	
+	padding:3px;	
 }
 #btn-search
 {
 	cursor:pointer;	
+}
+.ben-quangcao
+{
+	margin-bottom:5px;	
 }

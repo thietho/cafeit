@@ -5,8 +5,9 @@
         </div>
     
         <div class="ben-right" id="ben-searchform">
-        	<input type="text" class="ben-text-search" class="ben-right" id="txt_search"/>
+        	
             <img id="btn-search" src="<?php echo HTTP_SERVER.DIR_IMAGE?>btn-search.png" class="ben-right"/>
+            <input type="text" class="ben-text-search ben-right"  id="txt_search"/>
         </div>
     	
         <div class="clearer">&nbsp;</div>

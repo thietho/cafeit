@@ -247,8 +247,8 @@ class ControllerPageDetail extends Controller
 		$child = $this->model_core_sitemap->getListByParent($sitemapid, $this->member->getSiteId());
 		if(count($child) )
 			$this->data['leftsitebar']['produtcategory'] = $this->loadModule('sitebar/catalogue','index',$arr);
-
-		//$this->data['leftsitebar']['exchange'] = $this->loadModule('sitebar/exchange');
+		$this->data['leftsitebar']['supportonline'] = $this->loadModule('sitebar/supportonline');
+		$this->data['leftsitebar']['exchange'] = $this->loadModule('sitebar/exchange');
 		$this->data['leftsitebar']['weblink'] = $this->loadModule('sitebar/weblink');
 		//$this->data['leftsitebar']['hitcounter'] = $this->loadModule('sitebar/hitcounter');
 		
