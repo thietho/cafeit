@@ -14,9 +14,7 @@
                 <div id="ben-home-infor">
                     <?php echo $tintucmoi?>
                     <?php echo $gioithieu?>
-                    <div class="ben-home-quangcao ben-right">
-                    	<img src="<?php echo HTTP_SERVER.DIR_IMAGE?>quangcao.png" />
-                    </div>
+                    <?php echo $weblink?>
                     <div class="clearer"></div>              
                 </div>
             </div>
