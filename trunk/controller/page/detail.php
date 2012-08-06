@@ -239,14 +239,16 @@ class ControllerPageDetail extends Controller
 		//Left sitebar
 		$sitemapid = $this->document->sitemapid;
 		$sitemapid=$this->model_core_sitemap->getRoot($sitemapid, $this->member->getSiteId());
-		if($sitemapid=="")
+		$child = $this->model_core_sitemap->getListByParent($sitemapid, $this->member->getSiteId());
+		if($sitemapid=="" || count($child)==0)
 		{
 			$sitemapid = "san-pham";
 		}
+		
+		
+		
 		$arr = array($sitemapid);
-		$child = $this->model_core_sitemap->getListByParent($sitemapid, $this->member->getSiteId());
-		if(count($child) )
-			$this->data['leftsitebar']['produtcategory'] = $this->loadModule('sitebar/catalogue','index',$arr);
+		$this->data['leftsitebar']['produtcategory'] = $this->loadModule('sitebar/catalogue','index',$arr);
 		$this->data['leftsitebar']['supportonline'] = $this->loadModule('sitebar/supportonline');
 		$this->data['leftsitebar']['exchange'] = $this->loadModule('sitebar/exchange');
 		$this->data['leftsitebar']['weblink'] = $this->loadModule('sitebar/weblink');
