@@ -136,6 +136,7 @@ class ControllerModuleBlock extends Controller
 					'title' => $media['title'],
 					'summary' => $media['summary'],
 					'imagethumbnail' => $imagethumbnail,
+					'imagethumbnailpng' => $imagethumbnailpng,
 					'statusdate' => $this->date->formatMySQLDate($media['statusdate'], 'longdate', "/"),
 					'link' => $link
 				);

@@ -4,7 +4,7 @@
                     <div style="display:none">
                     	<?php foreach($medias as $key => $media) {?>
                         <div id="ben-home-quancao-<?php echo $key?>">
-                        	<a href="<?php echo $media['link']?>" target="_blank"><img class="ben-quangcao" src="<?php echo $media['imagethumbnail']?>" /></a>
+                        	<a href="<?php echo $media['link']?>" target="_blank"><img class="ben-quangcao" src="<?php echo $media['imagethumbnailpng']?>" /></a>
                         </div>    
                         <?php } ?>
                     </div>
