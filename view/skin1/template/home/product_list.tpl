@@ -25,7 +25,7 @@ $('#order').val('<?php echo $_GET["order"]?>');
     <?php } ?>
     <div id="listpoduct">
         <?php foreach($medias as $media) {?>
-        <div  class="ben-left product">
+        <div class="ben-left product link_hover" data-tooltip="sticky1" ref="<?php echo $media['imagetpreview']?>">
             <table>
                 <tr>
                     <td>
