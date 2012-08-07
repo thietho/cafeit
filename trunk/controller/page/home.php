@@ -15,7 +15,7 @@ class ControllerPageHome extends Controller
 		{
 			//Banner home
 			$template = array(
-						  'template' => "home/banner.tpl",
+						  'template' => "home/bannerhome.tpl",
 						  'width' => 920,
 						  'height' =>300
 						  );
@@ -36,6 +36,8 @@ class ControllerPageHome extends Controller
 						  'template' => "home/product_list.tpl",
 						  'width' => 147,
 						  'height' =>147,
+						  'widthpreview' => 300,
+						  'heightpreview' => 300,
 						  'paging' => false,
 						  'sorting' =>false
 						  );

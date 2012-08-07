@@ -83,14 +83,15 @@
 
 /* Caption - title - arrows */
 #slider {
-    width: 652px;
-    height: 332px;
+    width: 920px;
+    height: 300px;
+	margin:0 auto;
 }
 #slider a img {
 	position:absolute;
 	top:0px; 
-	width: 652px;
-    height: 332px;
+	width: 920px;
+    height: 300px;
 	left:0px;
 	display:none;
 }
@@ -102,7 +103,7 @@
 .nivo-controlNav {
 	position:absolute;
 	right: 0;
-	bottom: 40px;
+	bottom: 0px;
     float: right;
 }
 .nivo-controlNav a {

@@ -179,6 +179,8 @@ class ControllerPageDetail extends Controller
 											  'template' => "module/product_list.tpl",
 											  'width' => 147,
 											  'height' =>147,
+											  'widthpreview' => 300,
+						 					  'heightpreview' => 300,
 											  'paging' => true,
 											  'sorting' =>true
 											  );
