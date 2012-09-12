@@ -44,7 +44,7 @@ class ControllerPageHome extends Controller
 			
 			$medias = $this->getProduct('sanphammoi');
 			
-			$arr = array("",6,"",$template,$medias);
+			$arr = array("",5,"",$template,$medias);
 			$this->data['producthome'] = $this->loadModule('module/productlist','index',$arr);
 			
 			
