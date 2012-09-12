@@ -1,14 +1,13 @@
 <div id="ben-header">
-    <div id="ben-top">
-        <div class="ben-left" id="ben-logo">
-            <img src="<?php echo HTTP_SERVER.DIR_IMAGE?>logo.png" alt="" />
-        </div>
-    
-        <div class="ben-right" id="ben-searchform">
+	<div id="ben-searchform">
         	
             <img id="btn-search" src="<?php echo HTTP_SERVER.DIR_IMAGE?>btn-search.png" class="ben-right"/>
             <input type="text" class="ben-text-search ben-right"  id="txt_search"/>
-        </div>
+        </div>	
+    <div id="ben-top">
+        <embed width="940" height="88" allowscriptaccess="always" loop="false" wmode="transparent" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" src="<?php echo HTTP_SERVER.DIR_IMAGE?>bannerheader.swf">
+    
+        
     	
         <div class="clearer">&nbsp;</div>
         
