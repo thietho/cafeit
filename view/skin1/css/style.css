@@ -391,7 +391,7 @@ input.ben-button:active {border-style: inset;}
 	width: 940px;
 	padding-bottom: 0px;
 	background:url(../image/bg-header.png) no-repeat;
-	height:88px;
+	height:150px;
 }
 
 
@@ -807,4 +807,9 @@ ul#menu li ul li div:hover {
 .ben-quangcao
 {
 	margin-bottom:5px;	
+}
+.tbl-exch td
+{
+	border:#000 solid thin;
+	padding:2px;
 }
