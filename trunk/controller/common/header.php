@@ -3,7 +3,7 @@ class ControllerCommonHeader extends Controller
 {
 	public function index()
 	{
-		$sitemapid = "hotroonline";
+		$sitemapid = $this->document->sitemapid;
 		$siteid = $this->member->getSiteId();
 		$this->load->model("core/media");
 		$this->data['sitemap'] = $this->model_core_sitemap->getItem($sitemapid, $siteid);
