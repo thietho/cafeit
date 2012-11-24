@@ -251,7 +251,7 @@ ul.ben-tab-list li {float: left;}
 
 
 /* Tables */
-table {margin-bottom: 0.5em; width: 100%;}
+table { width: 100%;}
 th {font-weight: bold;}
 thead th {text-align:center}
 th,td,caption {/*padding: 4px 10px 4px 5px;*/}
@@ -403,7 +403,7 @@ input.ben-button:active {border-style: inset;}
 #ben-searchform
 {
 	margin-top:115px;
-	margin-left:730px;
+	margin-left:704px;
 	position:absolute;
 }
 #ben-site-title{padding-top:30px}
@@ -805,7 +805,9 @@ ul#menu li ul li div:hover {
 }
 .ben-text-search
 {
-	padding:3px;	
+	padding:3px;
+	position:absolute;
+	margin:3px;
 }
 #btn-search
 {
