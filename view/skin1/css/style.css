@@ -242,7 +242,7 @@ ul.ben-tab-list li {float: left;}
 
 /* Navigation */
 .ben-navigation a {
-	color: #888;
+	color: #fff;
 	text-decoration: none;
 }
 .ben-navigation a:hover {color: #002;}
@@ -431,7 +431,6 @@ z-index:100;
 }
 #ben-main-nav .main
 {
-	color:#fff;
 	font-weight:bold;
 	text-transform:uppercase;	
 }
@@ -441,15 +440,19 @@ z-index:100;
 }
 #ben-main-nav a{
 display:block;
-padding:9px 29px;
+padding:9px 26px;
+margin:0 3px;
 
 
 text-decoration:none;
 }
 
 #ben-main-nav a:hover{
-background-color:#fff;
-color:#333;
+	background-color:#fff;
+	color:#7f7f7f;
+	border-radius:10px;
+	margin:3px;
+	height:31px;
 }
 
 #ben-main-nav li{
@@ -464,8 +467,11 @@ border-right:#7f7f7f solid thin;
 }
 
 #ben-main-nav a.current-tab{
-	background-color:#000000;
-	color:#FFFFFF;
+	background-color:#fff;
+	color:#7f7f7f;
+	border-radius:10px;
+	margin:3px;
+	height:31px;
 }
 
 #ben-main-nav ul {
