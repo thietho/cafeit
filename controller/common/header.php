@@ -3,8 +3,8 @@ class ControllerCommonHeader extends Controller
 {
 	public function index()
 	{
-		$sitemapid = $this->document->sitemapid;
 		$siteid = $this->member->getSiteId();
+		$sitemapid = $this->model_core_sitemap->getRoot($this->document->sitemapid, $siteid);
 		$this->load->model("core/media");
 		$this->data['sitemap'] = $this->model_core_sitemap->getItem($sitemapid, $siteid);
 		$this->data['media'] = $this->model_core_media->getItem($siteid.$sitemapid);
