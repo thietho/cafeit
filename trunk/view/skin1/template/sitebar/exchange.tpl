@@ -14,7 +14,15 @@
 </style>
 <div class="ben-section">
 
-	<div class="ben-section-title">Tỉ giá</div>
+	<div class="ben-section-title">
+    	<table>
+            <tr>
+                <td class="icon"><img src="<?php echo HTTP_SERVER.DIR_IMAGE?>icon-tigia.png"/></td>
+                <td class="title">Tỉ giá</td>
+            </tr>
+        </table>
+    	
+    </div>
     
     <div class="ben-section-content">
     	 <?php echo $tygia?>
