@@ -580,22 +580,29 @@ display:block;
 
 /* Sections */
 .ben-section {margin-bottom: 10px;}
-.ben-sidebar .ben-section{padding:0 5px;}
+.ben-sidebar .ben-section{padding:0 2px;}
 #ben-maincontent .ben-section{}
 
 .ben-section-content{}
-.ben-sidebar .ben-section-content{padding:5px}
+.ben-sidebar .ben-section-content{}
 #ben-maincontent .ben-section-content{}
 
 .ben-section-title {
-	background-color: #ccc;
-	
-	color: #7A7A7A;
 	font: bold 1.2em sans-serif;
 	
-	padding: 7px 10px 6px;
+	
 }
-.ben-sidebar .ben-section-title {}
+.ben-sidebar .ben-section-title {
+	background:url(../image/bg-sitebar-title.jpg) repeat-x;	
+	padding:12px 10px;
+	color:#fff;
+}
+.ben-sidebar .ben-section-title .icon {
+	width:20px;
+}
+.ben-sidebar .ben-section-title .title {
+	padding-left:5px;
+}
 #ben-maincontent .ben-section-title {margin-bottom: 5px;}
 
 
@@ -664,11 +671,18 @@ display:block;
 	background:#F00;
 }
 
-ul#menu, ul#menu ul {
+ul#menu
+{
+	list-style-type:none;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+}
+ul#menu ul {
   list-style-type:none;
   margin: 0;
-  padding: 0;
-  width: 100%;
+  padding:0 5px;
+  
 }
 
 ul#menu a {
@@ -680,16 +694,28 @@ ul#menu a {
 
 ul#menu div.collape{
 	cursor:pointer;
+	padding:10px 6px 10px 20px;
 }
-
+ul#menu span.collape{
+	margin-top:5px;
+	width:13px;
+	height:9px;
+}
+ul#menu span.down{
+	background:url(../image/sitebar-down.png) no-repeat;
+}
+ul#menu span.up{
+	background:url(../image/sitebar-up.png) no-repeat;
+}
 ul#menu li {
-  margin-top: 1px;
+	border-top:thin #CCC solid;
 }
 
 ul#menu li div {
   
-  
-  padding: 0.2em;
+  	background:#ececec;
+	
+
 }
 
 ul#menu li div a{
@@ -703,7 +729,7 @@ ul#menu li div:hover{
 }
 
 ul#menu li ul li div {
-  background: #CCCCCC;
+  background: #fff;
   color: #000;
   padding-left: 20px;
 }
@@ -713,7 +739,7 @@ ul#menu li ul li a {
 }
 
 ul#menu li ul li ul li div {
-  background: #F2F2F2;
+  
   color: #000;
   padding-left: 30px;
 }
@@ -724,7 +750,7 @@ ul#menu li ul li ul li div a {
 
 ul#menu li ul li div:hover {
   background: #aaa;
-  border-left: 5px #000 solid;
+ 
 }
 .number
 {
@@ -822,3 +848,4 @@ ul#menu li ul li div:hover {
 	border:#000 solid thin;
 	padding:2px;
 }
+
