@@ -431,7 +431,8 @@ z-index:100;
 }
 #ben-main-nav .main
 {
-	color:#000;
+	color:#fff;
+	font-weight:bold;
 	text-transform:uppercase;	
 }
 #ben-main-nav .sub
@@ -440,7 +441,7 @@ z-index:100;
 }
 #ben-main-nav a{
 display:block;
-padding:16px 30px;
+padding:9px 29px;
 
 
 text-decoration:none;
@@ -454,8 +455,8 @@ color:#333;
 #ben-main-nav li{
 float:left;
 position:relative;
-background:url(../image/bg-main-menu.png) repeat-x;
-height:68px;
+
+height:54px;
 border-right:#7f7f7f solid thin;
 }
 #ben-main-nav li:last-child{
