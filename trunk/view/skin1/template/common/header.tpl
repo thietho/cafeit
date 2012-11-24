@@ -1,9 +1,18 @@
 <div id="ben-header">
-	<div id="ben-searchform">
-        	
-            <img id="btn-search" src="<?php echo HTTP_SERVER.DIR_IMAGE?>btn-search.png" class="ben-right"/>
-            <input type="text" class="ben-text-search ben-right"  id="txt_search"/>
-        </div>	
+	<!--<div id="ben-searchform">
+        <table>
+        	<tr>
+            	<td>
+                	<input type="text" class="ben-text-search"  id="txt_search"/>
+                	<img id="btn-search" src="<?php echo HTTP_SERVER.DIR_IMAGE?>bg-inputsearch.png"/>
+                	
+                </td>
+                <td>
+        			<img id="btn-search" src="<?php echo HTTP_SERVER.DIR_IMAGE?>btn-search.png"/>        
+                </td>
+            </tr>
+        </table>
+    </div>	-->
     <div id="ben-top">
         <embed width="940" height="150" allowscriptaccess="always" loop="false" wmode="transparent" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" src="<?php echo HTTP_SERVER.DIR_IMAGE?>bannerheader.swf">
     
@@ -17,7 +26,7 @@
     <div class="ben-navigation">
     
         <ul id="ben-main-nav">
-            <li><a href="<?php echo HTTP_SERVER?>"><div class="main">Trang chủ</div><div class="sub">Homepage</div></a></li>
+            <li><a href="<?php echo HTTP_SERVER?>" <?php echo ($sitemap['sitemapid']=='')?'class="current-tab"':'' ?>><div class="main">Trang chủ</div><div class="sub">Homepage</div></a></li>
             <li><a href="<?php echo $this->document->createLink('gioi-thieu')?>" <?php echo ($sitemap['sitemapid']=='gioi-thieu')?'class="current-tab"':'' ?>><div class="main">Giới thiệu</div><div class="sub">About us</div></a></li>
             <li><a href="<?php echo $this->document->createLink('hoi-nhom')?>" <?php echo ($sitemap['sitemapid']=='hoi-nhom')?'class="current-tab"':'' ?>><div class="main">Hội nhóm</div><div class="sub">Community</div></a></li>
             <li><a href="<?php echo $this->document->createLink('san-pham')?>" <?php echo ($sitemap['sitemapid']=='san-pham')?'class="current-tab"':'' ?>><div class="main">Sản phẩm</div><div class="sub">Our products</div></a></li>
