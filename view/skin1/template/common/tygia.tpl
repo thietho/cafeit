@@ -1,53 +1,51 @@
-        
-      <p>
-      Từ
-       <select id="formrate">
-        	<option value="1">VND</option>
-<?php
-	 foreach($Tygia as $item)
-     {
-?>
-			<option value="<?php echo $item['Buy']?>"><?php echo $item['CurrencyCode']?></option>
-<?php
-     }
-?>
-          
-        </select>
-        Đến
-        <select id="torate">
-        	<option value="1">VND</option>
-<?php
-	 foreach($Tygia as $item)
-     {
-     		$sel = "";
-     		if($item['CurrencyCode'] == "USD")
-            	$sel = 'selected="selected"';
-?>
-			<option value="<?php echo $item['Buy']?>" <?php echo $sel?>><?php echo $item['CurrencyCode']?></option>
-<?php
-     }
-?>
-        </select>
-        
-      </p>
-       
-       
-       
-       <p><?php echo $currencyexchange_text_amount?></p>
-       <p>
-       	<input type="text" id="amount" class="ben-textbox number" />&nbsp;&nbsp;
-        <input type="button" class="ben-button" value="Qui đổi" onclick="changeRate()"/>
-       </p>
-       
-       
+<table>
+	<tr>
+    	<td width="30px">Từ</td>
+        <td>
+        	<select id="formrate">
+                <option value="1">VND</option>
+    <?php
+         foreach($Tygia as $item)
+         {
+    ?>
+                <option value="<?php echo $item['Buy']?>"><?php echo $item['CurrencyCode']?></option>
+    <?php
+         }
+    ?>
+              
+            </select>
+        </td>
+    </tr>
+    <tr>
+    	<td>Đến</td>
+        <td>
+        	<select id="torate">
+                <option value="1">VND</option>
+    <?php
+         foreach($Tygia as $item)
+         {
+                $sel = "";
+                if($item['CurrencyCode'] == "USD")
+                    $sel = 'selected="selected"';
+    ?>
+                <option value="<?php echo $item['Buy']?>" <?php echo $sel?>><?php echo $item['CurrencyCode']?></option>
+    <?php
+         }
+    ?>
+            </select>
+        </td>
+    </tr>
+</table>
       
-      
-      
-      
-      <p><?php echo $currencyexchange_text_result?></p>
-      <p>
-        <input type="text" id="result" class="ben-textbox number" readonly="readonly"/>
-      </p>
+<p><?php echo $currencyexchange_text_amount?></p>
+<table>
+	<tr>
+    	<td><input type="text" id="amount" class="ben-textbox number quidoi ben-center" /></td>
+        <td style="text-align:center"><input type="button" class="ben-button" value="Qui đổi" onclick="changeRate()"/></td>
+        <td><input type="text" id="result" class="ben-textbox number quidoi ben-center" readonly="readonly"/></td>
+    </tr>
+</table>       
+       
 <script language="javascript">
 function changeRate()
 {
