@@ -329,10 +329,10 @@ select{height:28px}
 input.ben-textbox:focus, textarea:focus, select:focus {background: #FFFFF5;}
 
 input.ben-button {
-	background: #DDD;
-	border: 1px outset #AAA;
-	padding: 3px 5px;
-	color:#000000 !important;
+	background:url(../image/bg-button.png) repeat-x;
+	border:1px outset #AAA;
+	padding:5px 5px;
+	color:#727272 !important;
 	font-size:1em;
 	cursor:pointer;
 }
@@ -585,7 +585,9 @@ display:block;
 #ben-maincontent .ben-section{}
 
 .ben-section-content{}
-.ben-sidebar .ben-section-content{}
+.ben-sidebar .ben-section-content{
+	
+}
 #ben-maincontent .ben-section-content{padding:5px;}
 
 .ben-section-title {

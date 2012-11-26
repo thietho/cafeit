@@ -45,7 +45,7 @@
         <td><input type="text" id="result" class="ben-textbox number quidoi ben-center" readonly="readonly"/></td>
     </tr>
 </table>       
-       
+<p></p>       
 <script language="javascript">
 function changeRate()
 {
