@@ -620,16 +620,17 @@ display:block;
 /*---------- FOOTER AREA ------------*/
 #ben-footer {
 	border-top: 1px solid #DDD;
-	color: #fff;
-	padding: 16px 0px 0px;
+	color: #000;
+	padding: 10px;
+	background:#fff
 }
 #ben-footer a
 {
-	color:#fff;	
+	color:#000;	
 }
 #ben-footer a:hover
 {
-	color:#fff;	
+	color:#000;	
 }
 #ben-footer-left {}
 #ben-footer-menu ul
