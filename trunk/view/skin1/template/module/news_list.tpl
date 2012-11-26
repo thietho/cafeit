@@ -2,15 +2,16 @@
 <?php foreach($medias as $media) {?>
 <div class="ben-post">
 	<?php if($media['imagethumbnail'] !=""){ ?>
-	<a href='<?php echo $media['link']?>'><img src='<?php echo $media['imagethumbnail']?>' class='ben-left' /></a>
+	<a href='<?php echo $media['link']?>'><img src='<?php echo $media['imagethumbnailpng']?>' class='ben-left' /></a>
     <?php }?>
     <a href="<?php echo $media['link']?>"><h3><?php echo $media['title']?></h3></a>
     <!--<div class="ben-post-date"><?php echo $media['statusdate']?></div>-->
     <div class="ben-post-summary">
         <p><?php echo $media['summary']?></p>
     </div>
-    <a href="<?php echo $media['link']?>" class="ben-right ben-readmore"><?php echo $button_view?></a>
+    <a href="<?php echo $media['link']?>" class="ben-right ben-readmore ben-button"><?php echo $button_view?></a>
     <div class="clearer">&nbsp;</div>
+    <img src="<?php echo HTTP_SERVER.DIR_IMAGE?>line-tintuc.png"/>
 </div>
 <?php } ?>
 
