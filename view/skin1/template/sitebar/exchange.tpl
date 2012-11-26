@@ -29,7 +29,7 @@
     	
     	
     </div>
-
+	<img src="<?php echo HTTP_SERVER.DIR_IMAGE?>border-sitebar-content.png"/>
 </div>
 <script language="javascript">
 $(document).ready(function() {

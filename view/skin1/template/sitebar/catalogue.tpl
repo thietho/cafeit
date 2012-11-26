@@ -1,21 +1,22 @@
 <script type='text/javascript' language='javascript' src='<?php echo HTTP_SERVER.DIR_VIEW?>js/menu-collapsed.js'></script>
-                    <div class="ben-section">
-                    	<div class="ben-section-title">
-                        	<table>
-                            	<tr>
-                                	<td class="icon"><img src="<?php echo HTTP_SERVER.DIR_IMAGE?>icon-danhmuc.png"/></td>
-                                    <td class="title"><?php echo $sitemap['sitemapname']?></td>
-                                </tr>
-                            </table>
-                        	
-                        	
-                        </div>
-                        <div class="ben-section-content">
-                        	<ul id="menu">
-                                <?php echo $menu?>
-                            </ul>
-                        </div>
-                    </div>
+<div class="ben-section">
+    <div class="ben-section-title">
+        <table>
+            <tr>
+                <td class="icon"><img src="<?php echo HTTP_SERVER.DIR_IMAGE?>icon-danhmuc.png"/></td>
+                <td class="title"><?php echo $sitemap['sitemapname']?></td>
+            </tr>
+        </table>
+        
+        
+    </div>
+    <div class="ben-section-content">
+        <ul id="menu">
+            <?php echo $menu?>
+        </ul>
+    </div>
+    <img src="<?php echo HTTP_SERVER.DIR_IMAGE?>border-sitebar-content.png"/>
+</div>
 <script language="javascript">
 
 $(document).ready(function(){
