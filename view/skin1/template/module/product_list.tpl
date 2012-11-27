@@ -30,7 +30,16 @@ $('#order').val('<?php echo $_GET["order"]?>');
     <?php } ?>
     <div id="listpoduct">
         <?php foreach($medias as $media) {?>
-        <div  class="ben-left product link_hover" data-tooltip="sticky1" ref="<?php echo $media['imagetpreview']?>">
+        <div  class="ben-left product link_hover" data-tooltip="sticky1" ref="<?php echo $media['mediaid']?>">
+        <div id="<?php echo $media['mediaid']?>" style="display:none">
+        	<h6><?php echo $media['title']?></h6>
+            <div style="text-align:center">
+            	<img src="<?php echo $media['imagetpreview']?>"/>
+            </div>
+            <p>
+            	<?php echo html_entity_decode($media['summary'])?>
+            </p>
+        </div>
             <table>
                 <tr>
                     <td>
