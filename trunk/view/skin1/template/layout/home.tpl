@@ -117,8 +117,9 @@ $(function() {
 
 $(document).ready(function(){
 	$(".link_hover").hover(function(){
-		var img = '<img src="'+$(this).attr('ref')+'">';
-		$('#sticky1').html(img);
+		//var img = '<img src="'+$(this).attr('ref')+'">';
+		var eid = $(this).attr('ref')
+		$('#sticky1').html($('#'+eid).html());
 		
 	});
 
