@@ -341,7 +341,7 @@ a.ben-button{
 	background:url(../image/bg-button.png) repeat-x;
 	border: 1px outset #AAA;
 	padding: 5px 5px;
-	color:#000000 !important;
+	color:#727272 !important;
 	font-size:1em;
 	text-decoration:none;
 }
@@ -541,7 +541,11 @@ display:block;
 {
 	width:170px;	
 }
-
+.ben-sidebar .ben-section .ben-section-content table
+{
+	margin:5px;
+	width:198px;
+}
 /* Columns */
 .ben-col2 {width: 46%;}
 .ben-col2.ben-other{width:48%}
@@ -550,9 +554,9 @@ display:block;
 
 
 /* Posts - News list */
-.ben-post {margin-bottom: 20px;}
+.ben-post {margin: 10px;}
 
-.ben-post img.ben-left{margin-bottom:1em}
+.ben-post img.ben-left{border:#000 thin solid}
 
 .ben-post-title {}
 .ben-post-title a {}
