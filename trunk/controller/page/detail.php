@@ -77,8 +77,8 @@ class ControllerPageDetail extends Controller
 						{
 							$template = array(
 											  'template' => "module/news_list.tpl",
-											  'width' => 180,
-											  'height' =>180
+											  'width' => 120,
+											  'height' =>120
 											  );
 							$arr = array("",10,"",$template);
 							
@@ -179,8 +179,8 @@ class ControllerPageDetail extends Controller
 											  'template' => "module/product_list.tpl",
 											  'width' => 147,
 											  'height' =>147,
-											  'widthpreview' => 300,
-						 					  'heightpreview' => 300,
+											  'widthpreview' => 280,
+						 					  'heightpreview' => 280,
 											  'paging' => true,
 											  'sorting' =>true
 											  );
@@ -254,7 +254,7 @@ class ControllerPageDetail extends Controller
 		$this->data['leftsitebar']['supportonline'] = $this->loadModule('sitebar/supportonline');
 		$this->data['leftsitebar']['exchange'] = $this->loadModule('sitebar/exchange');
 		$this->data['leftsitebar']['weblink'] = $this->loadModule('sitebar/weblink');
-		//$this->data['leftsitebar']['hitcounter'] = $this->loadModule('sitebar/hitcounter');
+		$this->data['leftsitebar']['hitcounter'] = $this->loadModule('sitebar/hitcounter');
 		
 		//Rigth sitebar
 		/*$this->data['rightsitebar']['login'] = $this->loadModule('sitebar/login');

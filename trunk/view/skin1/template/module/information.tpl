@@ -1,4 +1,4 @@
-<h3><?php echo $post['title'] ?></h3>
+
 <div class="ben-post">
 
     <div class="ben-editor">

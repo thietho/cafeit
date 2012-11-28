@@ -35,7 +35,7 @@ function sendMessage()
 	);
 }
 </script>
-<h3><?php echo $post['title']?></h3>
+
 <div class="ben-post">
 <p>
     <?php echo $post['description']?>

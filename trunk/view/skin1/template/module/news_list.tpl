@@ -11,8 +11,9 @@
     </div>
     <a href="<?php echo $media['link']?>" class="ben-right ben-readmore ben-button"><?php echo $button_view?></a>
     <div class="clearer">&nbsp;</div>
-    <img src="<?php echo HTTP_SERVER.DIR_IMAGE?>line-tintuc.png"/>
+    
 </div>
+<img src="<?php echo HTTP_SERVER.DIR_IMAGE?>line-tintuc.png"/>
 <?php } ?>
 
 <?php if($othernews) {?>
