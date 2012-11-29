@@ -665,16 +665,24 @@ display:block;
 {
 	margin-top:5px;
 	text-align:center;	
+	background:url(../image/bg-page.png) no-repeat;
+	width:314px;
+	margin:0 auto;
 }
 .results
 {
 	text-align:center;	
 }
-
+.ben-page b
+{
+	background:url(../image/bg-page-curr.png) no-repeat;
+	padding:6px 10px;	
+	color:#FFF;
+}
 .ben-page a
 {
-	border:thin solid #CCC;
-	padding:3px;
+	
+	padding:6px 4px;
 	margin:3px;
 }
 .ben-answer
@@ -863,4 +871,12 @@ ul#menu li ul li div:hover {
 {
 	width:50px;	
 	margin:0 auto !important;
+}
+.ben-tooltip-price
+{
+	background:url(../image/bg-price.png) no-repeat;
+	padding:7px 0px 7px 30px;
+	width:105px;
+	color:#fff;
+	font-weight:bold;
 }

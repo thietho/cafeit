@@ -33,6 +33,10 @@ $('#order').val('<?php echo $_GET["order"]?>');
         <div  class="ben-left product link_hover" data-tooltip="sticky1" ref="<?php echo $media['mediaid']?>">
             <div id="<?php echo $media['mediaid']?>" style="display:none">
                 <h6><?php echo $media['title']?></h6>
+                <div class="ben-tooltip-price ben-right">
+                	<?php echo $this->string->numberFormate($media['price'])?> <?php echo $this->document->setup['Currency']?>
+                </div>
+                <div class="clearer">&nbsp;</div>
                 <div style="text-align:center">
                     <img src="<?php echo $media['imagetpreview']?>"/>
                 </div>

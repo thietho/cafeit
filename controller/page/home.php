@@ -36,8 +36,8 @@ class ControllerPageHome extends Controller
 						  'template' => "home/product_list.tpl",
 						  'width' => 147,
 						  'height' =>147,
-						  'widthpreview' => 300,
-						  'heightpreview' => 300,
+						  'widthpreview' => 280,
+						  'heightpreview' => 280,
 						  'paging' => false,
 						  'sorting' =>false
 						  );
