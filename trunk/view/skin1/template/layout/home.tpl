@@ -78,14 +78,14 @@ var HTTP_SERVER = '<?php echo HTTP_SERVER?>';
 	});
 </script>
 <script language="javascript">
-$(function() {
+/*$(function() {
 	$(".ben-datepicker").datepicker({
 			changeMonth: true,
 			changeYear: true,
 			dateFormat: 'dd-mm-yy',
 			
 			});
-	});
+	});*/
 </script>
 <body>
 <div id="ben-main">
