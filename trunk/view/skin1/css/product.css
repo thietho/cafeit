@@ -105,16 +105,19 @@
 {
 	position:absolute;
 }
-
+#ben-icon-hot
+{
+	margin-top:0;	
+}
 #ben-icon-sale
 {
-	margin-top:152px;	
+	margin-top:120px;	
 }
 
 #ben-icon-new
 {
 	margin-left:128px;
-	margin-top:140px;
+	margin-top:112px;
 }
 
 .ben-icon-collection

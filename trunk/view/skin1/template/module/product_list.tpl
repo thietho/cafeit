@@ -31,6 +31,21 @@ $('#order').val('<?php echo $_GET["order"]?>');
     <div id="listpoduct">
         <?php foreach($medias as $media) {?>
         <div  class="ben-left product link_hover" data-tooltip="sticky1" ref="<?php echo $media['mediaid']?>">
+        	<?php if(in_array("sanphamhot",$media['properties'])){ ?>
+            <div id="ben-icon-hot" class="ben-icon">
+                <img src="<?php echo HTTP_SERVER.DIR_IMAGE?>icon/ico-hot.png" />
+            </div>
+            <?php } ?>
+            <?php if(in_array("sanphamkhuyenmai",$media['properties'])){ ?>
+            <div id="ben-icon-sale" class="ben-icon">
+                <img src="<?php echo HTTP_SERVER.DIR_IMAGE?>icon/ico-sale.png" />
+            </div>
+            <?php } ?>
+            <?php if(in_array("sanphammoi",$media['properties'])){ ?>
+            <div id="ben-icon-new" class="ben-icon">
+                <img src="<?php echo HTTP_SERVER.DIR_IMAGE?>icon/ico-new.png" />
+            </div>
+            <?php } ?>
             <div id="<?php echo $media['mediaid']?>" style="display:none">
                 <h6><?php echo $media['title']?></h6>
                 <div class="ben-tooltip-price ben-right">
@@ -47,21 +62,7 @@ $('#order').val('<?php echo $_GET["order"]?>');
             <table>
                 <tr>
                     <td>
-                        <?php if(in_array("sanphamhot",$media['properties'])){ ?>
-                        <div id="ben-icon-hot" class="ben-icon">
-                            <img src="<?php echo HTTP_SERVER.DIR_IMAGE?>icon/ico-hot.png" />
-                        </div>
-                        <?php } ?>
-                        <?php if(in_array("sanphamkhuyenmai",$media['properties'])){ ?>
-                        <div id="ben-icon-sale" class="ben-icon">
-                            <img src="<?php echo HTTP_SERVER.DIR_IMAGE?>icon/ico-sale.png" />
-                        </div>
-                        <?php } ?>
-                        <?php if(in_array("sanphammoi",$media['properties'])){ ?>
-                        <!--<div id="ben-icon-new" class="ben-icon">
-                            <img src="<?php echo HTTP_SERVER.DIR_IMAGE?>icon/ico-new.png" />
-                        </div>-->
-                        <?php } ?>
+                        
                         <?php if($media['imagethumbnail'] !=""){ ?>
                         <a class="islink" href="<?php echo $media['link']?>"><img src='<?php echo $media['imagethumbnail']?>' class='ben-center' /></a>
                         <?php }?>
