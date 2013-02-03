@@ -44,9 +44,43 @@ class ControllerPageHome extends Controller
 			
 			$medias = $this->getProduct('sanphammoi');
 			
-			$arr = array("",5,"",$template,$medias);
-			$this->data['producthome'] = $this->loadModule('module/productlist','index',$arr);
+			$arr = array("",0,"",$template,$medias);
+			if(count($medias))
+				$this->data['sanphammoi'] = $this->loadModule('module/productlist','getAll',$arr);
+				
+			//San pham hot
+			$template = array(
+						  'template' => "home/product_list.tpl",
+						  'width' => 147,
+						  'height' =>147,
+						  'widthpreview' => 280,
+						  'heightpreview' => 280,
+						  'paging' => false,
+						  'sorting' =>false
+						  );
 			
+			$medias = $this->getProduct('sanphamhot');
+			
+			$arr = array("",0,"",$template,$medias);
+			if(count($medias))
+				$this->data['sanphamhot'] = $this->loadModule('module/productlist','getAll',$arr);
+			
+			//San pham khuyen mai
+			$template = array(
+						  'template' => "home/product_list.tpl",
+						  'width' => 147,
+						  'height' =>147,
+						  'widthpreview' => 280,
+						  'heightpreview' => 280,
+						  'paging' => false,
+						  'sorting' =>false
+						  );
+			
+			$medias = $this->getProduct('sanphamkhuyenmai');
+			
+			$arr = array("",0,"",$template,$medias);
+			if(count($medias))
+				$this->data['sanphamkhuyenmai'] = $this->loadModule('module/productlist','getAll',$arr);
 			
 			$template = array(
 						  'template' => "home/news_list.tpl",
