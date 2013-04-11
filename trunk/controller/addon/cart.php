@@ -4,7 +4,7 @@ class ControllerAddonCart extends Controller
 	private $error = array();
 	public function index()
 	{
-		$this->document->breadcrumb .= $this->data['text_cart'];
+		$this->document->breadcrumb .= "Giỏ hàng";
 		
 		$this->id="content";
 		$this->template="addon/cart.tpl";
@@ -35,7 +35,10 @@ class ControllerAddonCart extends Controller
 		}
 		$mediaid = $data['mediaid'];
 		$media = $this->model_core_media->getItem($mediaid);
+		
 		$price = $media['price'];
+		if($media['pricepromotion'])
+			$price = $media['pricepromotion'];
 		$parent = $this->model_core_media->getItem($media['mediaparent']);
 		if(count($parent))
 		{
@@ -49,6 +52,9 @@ class ControllerAddonCart extends Controller
 			$media['imagethumbnail'] = HelperImage::resizePNG($media['imagepath'], 100, 100);
 			$title = $media['title'];
 			$price = $media['price'];
+			$price = $media['price'];
+			if($media['pricepromotion'])
+				$price = $media['pricepromotion'];
 		}
 		$qty =(int)$_SESSION['cart'][$mediaid]['qty'];
 		
