@@ -412,6 +412,7 @@ class ModelCoreMedia extends ModelCoreFile
 	
 	public function update($data)
 	{
+		
 		$mediaid = $this->db->escape(@$data['mediaid']);
 		$mediaparent=$this->db->escape(@$data['mediaparent']);
 		$mediatype=$this->db->escape(@$data['mediatype']);
@@ -421,6 +422,7 @@ class ModelCoreMedia extends ModelCoreFile
 		$title=$this->db->escape(@$data['title']);
 		$summary=$this->db->escape(@$data['summary']);
 		$price=$this->db->escape(@$this->string->toNumber($data['price']));
+		$pricepromotion=$this->db->escape(@$this->string->toNumber($data['pricepromotion']));
 		$description=(@$data['description']);
 		$alias=$this->db->escape(@$data['alias']);
 		$keyword=$this->db->escape(@$data['keyword']);
@@ -449,6 +451,7 @@ class ModelCoreMedia extends ModelCoreFile
 						'title',
 						'summary',
 						'price',
+						'pricepromotion',
 						'description',
 						'alias',
 						'keyword',
@@ -470,6 +473,7 @@ class ModelCoreMedia extends ModelCoreFile
 						$title,
 						$summary,
 						$price,
+						$pricepromotion,
 						$description,
 						$alias,
 						$keyword,

@@ -2,11 +2,13 @@
 
 <?php echo $pager?>
 <div class="clearer">^&nbsp;</div>
+<?php if($_GET['edit']=='true'){ ?>
 <div>
 	<input type="checkbox" id="chkAll"/> Seleted all
 </div>
+<?php } ?>
 <?php foreach($files as $file){ ?>
-<div class="filelist left text-center" id="image<?php echo $file['fileid']?>" ondblclick="selectFile('<?php echo $file['fileid']?>')">
+<div class="filelist left text-center" id="<?php echo $file['fileid']?>" imagethumbnail="<?php echo $file['imagethumbnail']?>" filename="<?php echo $file['filename']?>" filepath="<?php echo $file['filepath']?>">
 	<img src="<?php echo $file['imagethumbnail']?>" />
 	<p class="filename"><?php echo $file['filename']?></p>
     <?php if($_GET['edit']=='true'){ ?>
@@ -16,6 +18,41 @@
 <?php } ?>
 
 <div class="clearer">^&nbsp;</div>
+<?php } ?>
+<?php if($_GET['edit']=='true'){ ?>
+<script language="javascript">
+$('.filelist').click(function(e) {
+	var fileid = this.id;
+    $("#popup").attr('title','Chọn hình');
+		$( "#popup" ).dialog({
+			autoOpen: false,
+			show: "blind",
+			hide: "explode",
+			width: 800,
+			height: 600,
+			modal: true,
+			buttons: {
+				
+				
+				
+				'Tải về':function()
+				{
+					window.location = "<?php echo HTTP_SERVER?>download.php?url="+ encodeURI($('#filepath').val());
+				},
+				'Đóng': function() 
+				{
+					
+					$( this ).dialog( "close" );
+				},
+			}
+		});
+	
+		
+		$("#popup-content").load("?route=core/file/detail&fileid="+fileid+"&dialog=true",function(){
+			$("#popup").dialog("open");	
+		});
+});
+</script>
 <?php } ?>
 <script language="javascript">
 $(document).ready(function(e) {
@@ -52,10 +89,12 @@ $('.chkfile').click(function(e) {
 $('.filelist').hover(
 	function(){
 		$(this).css('background-color','#ccc');
-		$(this).children('.filename').css('overflow','visible');
+		
 	},
 	function(){
 		$(this).css('background-color','transparent');
 		$(this).children('.filename').css('overflow','hidden');
 	});
+	
+
 </script>

@@ -18,7 +18,7 @@
         	<input class="button" type="button" value="<?php echo $button_preview?>" onclick="preview()"/>
         	<input class="button" type="button" value="<?php echo $button_save?>" onclick="save()"/>
             <a class="button" href="<?php echo $DIR_CANCEL.'&page='.$_GET['page']?>"><?php echo $button_cancel?></a>
-             <input type="hidden" id="status" name="status" value="<?php echo $status?>" />
+             
              <input type="hidden" id="mediaid" name="mediaid" value="<?php echo $mediaid?>" />
              <input type="hidden" id="mediatype" name="mediatype" value="<?php echo $mediatype?>" />
              <input type="hidden" id="refersitemap" name="refersitemap" value="<?php echo $refersitemap?>" />
@@ -122,7 +122,22 @@ $('#title').change(function(e) {
                             <label><?php echo $text_price?></label><br>
                             <input class="text number" type="text" name="price" value="<?php echo $price?>" size="60" />
                         </p>
+                        <p>
+                            <label>Giá khuyến mãi</label><br>
+                            <input class="text number" type="text" name="pricepromotion" value="<?php echo $pricepromotion?>" size="60" />
+                        </p>
                         <?php } ?>
+                        <p>
+                        	<label>Trang thái:</label>
+                            
+                            <select id="status" name="status">
+                            	<option value="active">Hiện</option>
+                                <option value="hide">Ẩn</option>
+                            </select>
+                            <script language="javascript">
+								$('#status').val('<?php echo $status?>')
+							</script>
+                        </p>
                     </div>
                     <?php if($hasFile) {?>
                     <div class="col2 right">
@@ -199,11 +214,12 @@ $(document).ready(function(e) {
                 </div>
                 
             </div>
+            <?php if($hasProperties) {?>
             <div id="fragment-properties">
             	<div>
                 	
                 	<p>
-                    	<label><?php echo $text_manufacture?></label>
+                    	<label>Nhãn hiệu</label><br />
                         <select name="nhanhieu">
                         	<option value=""></option>
                         	<?php foreach($nhanhieu as $it){ ?>
@@ -224,6 +240,7 @@ $(document).ready(function(e) {
                     </p>
                 </div>
             </div>
+            <?php } ?>
             <div id="fragment-detail">
             	<a class="button" onclick="browserFileEditor()"><?php echo $entry_photo ?></a>
                 <input type="hidden" id="listselectfile" name="listselectfile" />
@@ -401,10 +418,10 @@ $(document).ready(function() {
                         <?php echo $lbl_title ?><br />
                         <input class="text" type="text" name="price_title" id="price_title" value="" size="40" />
                     </p>
-                    <!--<p>
+                    <p>
                         Code sản phẩm:<br />
-                        <input class="text" type="text" name="price_code" id="price_code" value="" size="40" onchange="price.loadPrice(this.value)"/> <input type="button" class="button" value="Lấy giá" onclick="price.loadPrice($('#price_code').val())" />
-                    </p>-->
+                        <input class="text" type="text" name="price_code" id="price_code" value="" size="40" onchange="price.loadPrice(this.value)"/> <!--<input type="button" class="button" value="Lấy giá" onclick="price.loadPrice($('#price_code').val())" />-->
+                    </p>
                     <p>
                         <?php echo $lbl_standardprice ?><br />
                         <input class="text number" type="text" name="price_thitruong" id="price_thitruong" value="" size="40" />
@@ -461,8 +478,8 @@ function Price()
 	this.save = function()
 	{
 		var price = $("#price_gia").val().replace(/,/g,"");
-		if($("#price_khuyenmai").val()!= 0)
-			price = $("#price_khuyenmai").val().replace(/,/g,"")
+		
+		var	pricepromotion = $("#price_khuyenmai").val().replace(/,/g,"")
 		$.post("?route=core/postcontent/savepost", 
 					{
 						mediaid : $("#price_mediaid").val(), 
@@ -470,7 +487,8 @@ function Price()
 						title : $("#price_title").val(), 
 						mediatype : 'price',
 						summary : "[code="+ $('#price_code').val() +"][thitruong="+ $("#price_thitruong").val().replace(/,/g,"") +"][gia="+ $("#price_gia").val().replace(/,/g,"") +"][khuyenmai="+ $("#price_khuyenmai").val().replace(/,/g,"") +"][makhuyenmai="+ $('#machuongtrinh').val() +"]",
-						price : price
+						price : price,
+						pricepromotion : pricepromotion
 					},
 			function(data){
 				if(data=="true")
@@ -621,7 +639,7 @@ $(document).ready(function(e) {
 </div>
 
 <script src='<?php echo DIR_JS?>ajaxupload.js' type='text/javascript' language='javascript'> </script>
-<script src="<?php echo DIR_JS?>jquery.tabs.pack.js" type="text/javascript"></script>
+
 
 <script type="text/javascript" charset="utf-8">
 function save()
@@ -678,7 +696,7 @@ function preview()
 					
 					obj = jQuery.parseJSON(data);
 					alias = "/" + obj.alias;
-					url = "<?php echo str_replace('/cms/',"/".$_GET['sitemapid'],HTTP_SERVER); ?>" + alias + '.html';
+					url = "<?php echo str_replace('/cms/',"/".$_GET['sitemapid'],HTTP_SERVER); ?>" + alias + '_preview'+'.html';
 					window.open(url,'_blank');
 				}
 				else
@@ -717,20 +735,127 @@ $(document).ready(function() {
 function browserFileImage()
 {
     //var re = openDialog("?route=core/file&dialog=true",800,500);
-	$('#handler').val('image');
+	/*$('#handler').val('image');
 	$('#outputtype').val('image');
 	showPopup("#popup", 800, 500);
 	$("#popup").html("<img src='view/skin1/image/loadingimage.gif' />");
-	$("#popup").load("?route=core/file&dialog=true");
+	$("#popup").load("?route=core/file&dialog=true");*/
+	
+	$("#popup").attr('title','Chọn hình');
+		$( "#popup" ).dialog({
+			autoOpen: false,
+			show: "blind",
+			hide: "explode",
+			width: 800,
+			height: 600,
+			modal: true,
+			
+		});
+	
 		
+		$("#popup-content").load("?route=core/file&dialog=true&type=single",function(){
+			$("#popup").dialog("open");	
+		});
+		
+}
+function intSeleteFile(type)
+{
+	
+	switch(type)
+	{
+		case "single":
+			$('.filelist').click(function(e) {
+				$('#imagepreview').attr('src',$(this).attr('imagethumbnail'));
+				$('#imageid').val(this.id);
+				$('#imagepath').val($(this).attr('filepath'));
+				$('#imagethumbnail').val($(this).attr('imagethumbnail'));
+				$("#popup").dialog( "close" );
+			});			
+			break;
+			
+		case "editor":
+			$('.filelist').click(function(e) {
+
+				
+				width = "";
+							
+				var value = "<img src='<?php echo HTTP_IMAGE?>"+$(this).attr('filepath')+"'/>";
+				
+				var oEditor = CKEDITOR.instances['editor1'] ;
+				
+				
+				// Check the active editing mode.
+				if (oEditor.mode == 'wysiwyg' )
+				{
+					// Insert the desired HTML.
+					oEditor.insertHtml( value ) ;
+					
+					var temp = oEditor.getData()
+					oEditor.setData( temp );
+				}
+				else
+					alert( 'You must be on WYSIWYG mode!' ) ;
+				$("#popup").dialog( "close" );
+			});			
+			break;
+		case "multi":
+			$('.filelist').click(function(e) {
+                $('#popup-seletetion').append($(this))
+            });
+			break;
+	}
 }
 function browserFileAttachment()
 {
-	$('#handler').val('attachment');
-	$('#outputtype').val('attachment');
-	showPopup("#popup", 800, 500);
-	$("#popup").html("<img src='view/skin1/image/loadingimage.gif' />");
-	$("#popup").load("?route=core/file&dialog=true");
+
+	$("#popup").attr('title','Chọn hình');
+		$( "#popup" ).dialog({
+			autoOpen: false,
+			show: "blind",
+			hide: "explode",
+			width: 800,
+			height: 600,
+			modal: true,
+			buttons: {
+				
+				
+				
+				'Xem danh sach':function()
+				{
+					$( "#popup-selete" ).show('fast',function(){
+						$( "#popup-selete" ).position({
+							my: "center",
+							at: "center",
+							of: "#popup"
+						});
+						$( "#popup-selete" ).draggable();
+					});
+					$('.closeselect').click(function(e) {
+                        $( "#popup-selete" ).hide('fast');
+                    });
+				},
+				'Chọn': function() 
+				{
+					$('#popup-seletetion .filelist').each(function(index, element) {
+                        $.getJSON("?route=core/file/getFile&fileid="+this.id+"&width=50", 
+							function(file) 
+							{
+								
+								$('#attachment').append(attachment.creatAttachmentRow(file.file.fileid,file.file.filename,file.file.imagepreview));
+								
+							});
+						
+                    });
+					$('#popup-seletetion').html("");
+					$( this ).dialog( "close" );
+				},
+			}
+		});
+	
+		
+		$("#popup-content").load("?route=core/file&dialog=true&type=multi",function(){
+			$("#popup").dialog("open");	
+		});
 }
 function browserFile()
 {
@@ -745,81 +870,26 @@ function browserFile()
 
 function browserFileEditor()
 {
-    //var re = openDialog("?route=core/file&dialog=true",800,500);
-	$('#handler').val('editor1');
-	$('#outputtype').val('editor');
-	showPopup("#popup", 800, 500);
-	$("#popup").html("<img src='view/skin1/image/loadingimage.gif' />");
-	$("#popup").load("?route=core/file&dialog=true")
+
+	
+	$("#popup").attr('title','Chọn hình');
+		$( "#popup" ).dialog({
+			autoOpen: false,
+			show: "blind",
+			hide: "explode",
+			width: 800,
+			height: 600,
+			modal: true,
+			
+		});
+	
 		
+		$("#popup-content").load("?route=core/file&dialog=true&type=editor",function(){
+			$("#popup").dialog("open");	
+		});
 }
 
-function addImageTo()
-{
-	var str= trim($("#listselectfile").val(),",");
-	var arr = str.split(",");
-	
-	if(str!="")
-	{
-		for (i=0;i<arr.length;i++)
-		{
-			$.getJSON("?route=core/file/getFile&fileid="+arr[i], 
-				function(data) 
-				{
-					switch($('#outputtype').val())
-					{
-						case 'editor':
-							width = "";
-							
-							var value = "<img src='<?php echo HTTP_IMAGE?>"+data.file.filepath+"'/>";
-							
-							var oEditor = CKEDITOR.instances[$('#handler').val()] ;
-							
-							
-							// Check the active editing mode.
-							if (oEditor.mode == 'wysiwyg' )
-							{
-								// Insert the desired HTML.
-								oEditor.insertHtml( value ) ;
-								$("#listselectfile").val('');
-								var temp = oEditor.getData()
-								oEditor.setData( temp );
-							}
-							else
-								alert( 'You must be on WYSIWYG mode!' ) ;
-							break;
-						case 'image':
-							var handler = $('#handler').val();
-							$('#'+handler+'id').val(data.file.fileid)
-							$('#'+handler+'path').val(data.file.filepath)
-							$.getJSON("?route=core/file/getFile&fileid="+data.file.fileid+"&width=200", 
-							function(file) 
-							{
-								$('#'+handler+'thumbnail').val(file.file.imagepreview)
-								$('#'+handler+'preview').attr('src',file.file.imagepreview)
-							});
-							break;
-						case 'file':
-							var handler = $('#handler').val();
-							$('#'+handler+'id').val(data.file.fileid);
-							$('#'+handler+'path').val(data.file.filepath);
-							$('#'+handler+'name').html(data.file.filename);
-							break;
-						case 'attachment':
-							var handler = $('#handler').val();
-							$.getJSON("?route=core/file/getFile&fileid="+data.file.fileid+"&width=50", 
-							function(file) 
-							{
-								$('#'+handler).append(attachment.creatAttachmentRow(data.file.fileid,data.file.filename,file.file.imagepreview));
-								
-							});
-							
-							break;
-					}
-				});
-		}
-	}
-}
+
 function Attachment()
 {
 	this.index = 0;
@@ -830,6 +900,7 @@ function Attachment()
 	}
 	this.creatAttachmentRow = function(iid,path,thums)
 	{
+		
 		row = '<div id="attrows'+attachment.index+'"><img src="'+thums+'" /><input type="hidden" id="attimageid'+attachment.index+'" name="attimageid['+attachment.index+']" value="'+iid+'" />'+path+' <a id="removerow'+attachment.index+'" onclick="attachment.removeAttachmentRow('+attachment.index+')" class="button" >Remove</a></div>';
 		attachment.index++;
 		return row;	
