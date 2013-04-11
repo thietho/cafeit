@@ -59,6 +59,7 @@ a:focus,a:hover {color: #039;}
 a {
 	color: #456;
 	text-decoration: none;
+	cursor:pointer;
 }
 a:hover {text-decoration: underline;}
 
@@ -138,7 +139,7 @@ ul.nice-list li .right {color: #999;}
 
 /* Tables */
 
-table {margin-bottom: 1.4em; width: 100%;}
+table { width: 100%;}
 th {font-weight: bold;}
 thead th {background: #C3D9FF;}
 th,td,caption {padding: 4px 10px 4px 5px;}
@@ -572,7 +573,7 @@ img.alignright, img.right {margin: 0 0 1em 1.5em;}
 
 
 /* Columns */
-.col2 {width: 46%;}
+.col2 {width: 30%;}
 .col3, .col3-mid {width: 31%;}
 .col3-mid {margin-left: 3%;}
 
@@ -790,4 +791,98 @@ height:100px;
 .results
 {
 	margin:5px;	
+}
+#productlist
+{
+	width:600px;
+	
+}
+#productselect
+{
+	width:145px;
+}
+.product-item
+{
+	height:190px;	
+	border:2px solid #fff;
+}
+.product-price
+{
+	position:absolute;
+	margin-top:100px;
+	background:#fff;
+	border:2px solid #666;
+	border-radius:5px;
+	display:none;
+	width:270px;
+}
+.price-item:hover
+{
+	background:#666;
+	cursor:pointer;
+}
+.product-item:hover
+{
+	border:2px solid #666;
+}
+.order-new
+{
+	background:#FF0 !important;
+}
+.order-wait
+{
+	background:#0FF !important;
+}
+.order-pending
+{
+	background:#F0F !important;
+}
+.order-confirmed
+{
+	background:#0F0 !important;
+}
+.order-waitpayment
+{
+	background:#00F !important;
+}
+.order-completed
+{
+	background:#FFF !important;
+}
+.order-cancel
+{
+	background:#666 !important;
+}
+#popup-content
+{
+	
+}
+#popup-selete
+{
+	position:absolute ;
+	background:#fff;
+	width:250px;
+	height:400px;
+	overflow:auto;
+	display:none;
+	border:thin solid #999;
+}
+.selectitem
+{
+	padding:10px;
+	width:209px;
+}
+.filelist
+{
+	width:145px;	
+	height:150px;
+}
+.filename
+{
+	display:none;	
+}
+#popup-seletetion .filelist
+{
+	height:auto;
+	padding:5px;
 }

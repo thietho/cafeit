@@ -34,6 +34,7 @@ class ControllerModuleProductlist extends Controller
 			foreach($child as $item)
 				$listsitemap[] = $item['sitemapid'];
 		}
+		
 		$queryoptions = array();
 		$queryoptions['mediaparent'] = '%';
 		$queryoptions['mediatype'] = '%';
@@ -52,7 +53,7 @@ class ControllerModuleProductlist extends Controller
 				$orderby = " ORDER BY `price` DESC";
 				break;
 			default:
-				$orderby = " Order by position, statusdate DESC";
+				$orderby = " ORDER BY `updateddate` DESC";
 		}
 		
 		if($mediaid == "")
@@ -107,13 +108,18 @@ class ControllerModuleProductlist extends Controller
 				$priceproduct = $this->model_core_media->getListByParent($media['mediaid']," AND mediatype = 'price' Order by position");
 				$price = $media['price'];
 				if($price == 0)
+				{
 					$price = $priceproduct[0]['price'];
+					$volume = $priceproduct[0]['title'];
+				}
 				$properties = $this->string->referSiteMapToArray($media['groupkeys']);
 				$this->data['medias'][] = array(
 					'mediaid' => $media['mediaid'],
 					'title' => $media['title'],
+					'keyword' => $media['keyword'],
 					'summary' => $media['summary'],
 					'price' => $price,
+					'volume' => $volume,
 					'properties' => $properties,
 					'imagethumbnail' => $imagethumbnail,
 					'imagetpreview' => $imagetpreview,
@@ -161,17 +167,42 @@ class ControllerModuleProductlist extends Controller
 		$to = $count;
 		
 		//Get list
+		$child = array();
+		$this->model_core_sitemap->getTreeSitemap($sitemapid,$child,$this->member->getSiteId());
+		$listsitemap = array();
+		if(count($child))
+		{
+			foreach($child as $item)
+				$listsitemap[] = $item['sitemapid'];
+		}
+		
 		$queryoptions = array();
 		$queryoptions['mediaparent'] = '%';
 		$queryoptions['mediatype'] = '%';
-		$queryoptions['refersitemap'] = $sitemapid;
+		$queryoptions['refersitemap'] = $listsitemap;
 		
+		$order = $_GET['order'];
+		$orderby = "";
+		switch($order)
+		{
+			case "az":
+				$orderby = " ORDER BY `title` ASC";
+				break;
+			case "gt":
+				$orderby = " ORDER BY `price` ASC";
+				break;
+			case "gg":
+				$orderby = " ORDER BY `price` DESC";
+				break;
+			default:
+				$orderby = " ORDER BY `updateddate` DESC";
+		}
 		if($mediaid == "")
 		{
 			if(count($medias)==0)
 			{
 				//$medias = $this->model_core_media->getPaginationList($queryoptions, $step, $to);
-				$medias = $this->model_core_media->getPaginationList($queryoptions);
+				$medias = $this->model_core_media->getPaginationList($queryoptions,0,0,$orderby);
 			}
 			
 			
@@ -200,13 +231,19 @@ class ControllerModuleProductlist extends Controller
 				$priceproduct = $this->model_core_media->getListByParent($media['mediaid']," AND mediatype = 'price' Order by position");
 				$price = $media['price'];
 				if($price == 0)
+				{
 					$price = $priceproduct[0]['price'];
+					$volume = $priceproduct[0]['title'];
+					
+				}
 				$properties = $this->string->referSiteMapToArray($media['groupkeys']);
 				$this->data['medias'][] = array(
 					'mediaid' => $media['mediaid'],
 					'title' => $media['title'],
+					'keyword' => $media['keyword'],
 					'summary' => $media['summary'],
 					'price' => $price,
+					'volume' => $volume,
 					'properties' => $properties,
 					'imagethumbnail' => $imagethumbnail,
 					'imagetpreview' => $imagetpreview,

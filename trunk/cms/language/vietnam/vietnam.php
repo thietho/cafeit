@@ -22,7 +22,6 @@ $_['text_pagination']       = 'Showing %s to %s of %s (%s Pages)';
 $_['text_separator']        = ' &gt; ';
 $_['text_sitemapheader'] = 'SITEMAP MANAGEMENT';
 $_['text_editmodule']='Loại trang';
-$_['text_manufacture']='Nhà sản xuất';
 $_['text_status']='Tình trạng';
 $_['text_control']='Công cụ';
 $_['text_orderid']='Order Id';
