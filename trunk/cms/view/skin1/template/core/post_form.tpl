@@ -34,14 +34,14 @@
             
         	<ul>
                 <li class="tabs-selected"><a href="#fragment-content" ><span><?php echo $tab_editcontent?></span></a></li>
-                <?php if($hasProperties) {?>
-                <li><a href="#fragment-properties"><span><?php echo $lbl_property ?></span></a></li>
+                <?php if(@$hasProperties) {?>
+                <li><a href="#fragment-properties"><span><?php echo @$lbl_property ?></span></a></li>
                 <?php }?>
                 <li><a href="#fragment-detail"><span><?php echo $lbl_detail ?></span></a></li>
                 <?php if($hasVideo) {?>
                 <li><a href="#fragment-video"><span>Video</span></a></li>
                 <?php }?>
-                <?php if($hasAudio) {?>
+                <?php if(@$hasAudio) {?>
                 <li><a href="#fragment-audio"><span>Audio</span></a></li>
                 <?php }?>
                 <?php if($hasSubInfor) {?>
@@ -56,7 +56,7 @@
                 <?php if($hasTabDocuments){ ?>
                 <li><a href="#fragment-documents"><span><?php echo $lbl_document ?></span></a></li>
                 <?php } ?>
-                <?php if($hasProductPrice) {?>
+                <?php if(@$hasProductPrice) {?>
                 <li><a href="#fragment-productprice"><span><?php echo $lbl_price?></span></a></li>
                 <?php }?>
                 <?php if($hasTabMap) {?>
@@ -214,7 +214,7 @@ $(document).ready(function(e) {
                 </div>
                 
             </div>
-            <?php if($hasProperties) {?>
+            <?php if(@$hasProperties) {?>
             <div id="fragment-properties">
             	<div>
                 	
@@ -270,7 +270,7 @@ $(document).ready(function(e) {
             </div>
             <?php } ?>
             
-            <?php if($hasAudio) {?>
+            <?php if(@$hasAudio) {?>
             <div id="fragment-audio">
                     <p id="pnAudio">
                         <label for="file"><?php echo $lbl_file ?></label><br />
@@ -410,7 +410,7 @@ $(document).ready(function() {
             <div id="fragment-documents">
             </div>
             <?php } ?>
-            <?php if($hasProductPrice) {?>
+            <?php if(@$hasProductPrice) {?>
             <div id="fragment-productprice">
             	<input type="hidden" name="price_mediaid" id="price_mediaid" />
             	<div>
@@ -661,7 +661,7 @@ function save()
 				{
 					var sitemapid = $('#refersitemap').val().replace('[',"");
 					sitemapid = sitemapid.replace("]","");
-					window.location = "?route=<?php echo $this->getRoute()?>&sitemapid=<?php echo $_GET['sitemapid']?>&page=<?php echo $_GET['page'] ?>";	
+					window.location = "?route=<?php echo @$this->getRoute()?>&sitemapid=<?php echo @$_GET['sitemapid']?>&page=<?php echo @$_GET['page'] ?>";	
 				}
 				else
 					window.location = "?route=core/media";	
@@ -726,7 +726,7 @@ $(document).ready(function() {
 <?php if($hasVideo) {?>
 <script src="<?php echo DIR_JS?>uploadvideo.js" type="text/javascript"></script>
 <?php }?>
-<?php if($hasAudio) {?>
+<?php if(@$hasAudio) {?>
 <script src="<?php echo DIR_JS?>uploadaudio.js" type="text/javascript"></script>
 <?php }?>
 <script language="javascript">

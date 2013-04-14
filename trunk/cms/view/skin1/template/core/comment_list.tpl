@@ -24,7 +24,7 @@
                 <thead>
                     <tr class="tr-head">
                         <th width="1%">
-                        	<?php if($dialog!=true){ ?>
+                        	<?php if(@$dialog!=true){ ?>
                         	<input class="inputchk" type="checkbox" onclick="$('input[name*=\'delete\']').attr('checked', this.checked);">
                             <?php } ?>
                         </th>
@@ -37,7 +37,7 @@
                         
                         
                         
-                        <?php if($dialog!=true){ ?>
+                        <?php if(@$dialog!=true){ ?>
                         <th><?php echo $text_control ?></th>     
                         <?php } ?>
                     </tr>
@@ -82,7 +82,7 @@
                 </tbody>
                 </table>
             </div>
-        	<?php echo $pager?>
+        	<?php echo @$pager?>
         
         </form>
         

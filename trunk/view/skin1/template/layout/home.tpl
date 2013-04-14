@@ -60,7 +60,7 @@ var HTTP_SERVER = '<?php echo HTTP_SERVER?>';
 
 <script type='text/javascript' language='javascript' src='<?php echo HTTP_SERVER.DIR_JS?>jquery-tooltip.js'></script>
 <link rel='stylesheet' type='text/css' href='<?php echo HTTP_SERVER.DIR_VIEW?>css/stickytooltip.css'>
-
+<script type='text/javascript' language='javascript' src='<?php echo HTTP_SERVER.DIR_VIEW?>js/menu-collapsed.js'></script>
 <script type="text/javascript">
 	$(document).ready(function() {
 		/*

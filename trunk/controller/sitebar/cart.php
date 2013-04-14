@@ -25,7 +25,7 @@ class ControllerSitebarCart extends Controller
 	public function getCount()
 	{
 		$count = 0;
-		if(count($_SESSION['cart']))
+		if(count(@$_SESSION['cart']))
 			foreach($_SESSION['cart'] as $item)
 			{
 				$count += $item['qty'];

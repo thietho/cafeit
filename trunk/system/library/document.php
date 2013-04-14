@@ -265,14 +265,14 @@ final class Document {
 	public function getPara()
 	{
 		$uri = $_SERVER['REQUEST_URI'];
-		$arr = split("\?",$uri);
+		@$arr = split("\?",$uri);
 		
-		$listpara = split("&",$arr[1]);
+		@$listpara = split("&",$arr[1]);
 		$para = array();
 		foreach($listpara as $val)
 		{
-			$ar = split("=",$val);	
-			$para[$ar[0]] = $ar[1];
+			@$ar = split("=",$val);	
+			@$para[$ar[0]] = $ar[1];
 		}
 		return $para;
 	}

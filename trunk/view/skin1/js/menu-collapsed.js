@@ -1,6 +1,6 @@
 function initMenu() {
-  $('#menu ul').hide();
-  $('#menu li div.collape').click(
+  $('.menu ul').hide();
+  $('.menu li div.collape').click(
     function() {
 		if($(this).children('span').hasClass('down'))
 		{

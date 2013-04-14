@@ -38,11 +38,11 @@ class ControllerCoreSitemap extends Controller
 		{			
 			$module=$this->model_core_sitemap->getModules();
 			$sitemapname = $item['sitemapname'];
-			$modulename = $module['modulename'];
+			@$modulename = $module['modulename'];
 			
 			$deep = $item['level'];
 			
-			$link = $module['modulename'];
+			@$link = $module['modulename'];
 			
 				
 			$tab="";
@@ -69,7 +69,7 @@ class ControllerCoreSitemap extends Controller
 										'status'=>$arrstatus[$item['status']],
 										
 										'tab'=>$tab,
-										'filepath'=>$file[0]['filepath'],
+										'filepath'=>@$file[0]['filepath'],
 										'update' => $update
 								    );
 		
@@ -237,7 +237,7 @@ class ControllerCoreSitemap extends Controller
     	}
 		
 		$list = array();
-		$parent=$this->request->get['parent'];
+		@$parent=$this->request->get['parent'];
 		if(isset($this->request->get['sitemapid']))
 		{
 			$this->model_core_sitemap->getTreeSitemapEdit("",$this->request->get['sitemapid'],$list,$this->user->getSiteId());
@@ -294,7 +294,7 @@ class ControllerCoreSitemap extends Controller
 	
 	public function updatedelete()
 	{
-		if($this->request->post['type']!="" )
+		if(@$this->request->post['type']!="" )
 		{
 			$arr=$this->request->post['delete'];
 			$position=$this->request->post['position'];
