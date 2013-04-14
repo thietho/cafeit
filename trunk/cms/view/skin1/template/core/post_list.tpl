@@ -46,7 +46,7 @@
         	<?php echo $nextlink?>
             <?php echo $prevlink?>
             -->
-            <div class="phantrang"><?php echo $listpage ?></div>
+            <div class="phantrang"><?php echo @$listpage ?></div>
             <div class="clearer">&nbsp;</div>
         </div>
         

@@ -5,8 +5,8 @@
 		{
 			$this->load->model("core/media");
 			$this->load->helper('image');
-			$this->data['username'] = $this->session->data['username'];
-			$this->data['sitename'] = $this->session->data['sitename'];
+			@$this->data['username'] = $this->session->data['username'];
+			@$this->data['sitename'] = $this->session->data['sitename'];
 			$this->data['language'] = $this->getLanguageCBX();
 			$imagepath = $this->model_core_media->getInformation("setting","brochure");
 			

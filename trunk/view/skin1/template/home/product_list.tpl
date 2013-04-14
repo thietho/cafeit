@@ -4,7 +4,7 @@
     if(count($medias))
     {
     ?>
-    	<?php if($sorting){ ?>
+    	<?php if(@$sorting){ ?>
    	<div class="ben-post">
         <select id="order" class="ben-textbox ben-right" onchange="window.location = '?order='+this.value">
             <option value="new">Mới</option>
@@ -19,7 +19,7 @@ $('#order').val('<?php echo $_GET["order"]?>');
         
     </div>
     	<?php } ?>
-        <?php if($paging){ ?>
+        <?php if(@$paging){ ?>
     <?php echo $pager?>
     <div class="clearer">&nbsp;</div>
     <?php } ?>
@@ -86,7 +86,7 @@ $('#order').val('<?php echo $_GET["order"]?>');
     
     
     <div class="clearer">&nbsp;</div>
-    	<?php if($paging){ ?>
+    	<?php if(@$paging){ ?>
     <div class="ben-post">
     	<?php echo $pager?>
     </div>

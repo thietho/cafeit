@@ -122,7 +122,7 @@ class ModelCoreSitemap extends Model
 		$arr=array();
 		$row=$this->getItem($id, $siteid);
 		array_push($arr,$row);
-		while($row['sitemapparent']!="")
+		while(@$row['sitemapparent']!="")
 		{
 			$row=$this->getItem($row['sitemapparent'], $siteid);
 			array_push($arr,$row);
@@ -277,9 +277,9 @@ class ModelCoreSitemap extends Model
 		
 		$rows = $this->getListByParent($id, $siteid);
 		
-		$arr['countchild'] = count(rows);
+		@$arr['countchild'] = count(rows);
 		
-		if($arr['sitemapparent'] != "") $parentpath .= "-".$arr['sitemapparent'];
+		if(@$arr['sitemapparent'] != "") $parentpath .= "-".$arr['sitemapparent'];
 		
 		if($id!="")
 		{

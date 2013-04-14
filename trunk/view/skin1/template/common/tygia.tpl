@@ -37,7 +37,7 @@
     </tr>
 </table>
       
-<p><?php echo $currencyexchange_text_amount?></p>
+<p><?php echo @$currencyexchange_text_amount?></p>
 <table>
 	<tr>
     	<td><input type="text" id="amount" class="ben-textbox number quidoi ben-center" /></td>
