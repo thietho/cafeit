@@ -112,7 +112,7 @@ abstract class Controller {
 				
 				$controller->name = $class;
 				
-				$controller->module = $module;
+				@$controller->module = $module;
 				
 				$controller->data[$this->id] = $this->output;
 				
@@ -183,9 +183,9 @@ abstract class Controller {
 	
 	public function getRoute()
 	{
-		$route = $this->request->get['route'];
-		$arr = split("/",$route);
-		return $arr[0]."/".$arr[1];
+		@$route = $this->request->get['route'];
+		@$arr = split("/",$route);
+		return @$arr[0]."/".@$arr[1];
 	}
 	
 	public function getMethod()

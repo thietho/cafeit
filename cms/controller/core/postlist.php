@@ -123,12 +123,12 @@ class ControllerCorePostlist extends Controller
 		$this->load->model("core/sitemap");
 		$this->load->helper('image');
 		
-		$this->data['route'] = $this->request->get['moduleid'];
-		$moduleid = $this->request->get['moduleid'];
-		$sitemapid = $this->request->get['sitemapid'];
-		$mediaid = $this->request->get['mediaid'];
-		$siteid = $this->user->getSiteId();
-		$page = $this->request->get['page'];
+		@$this->data['route'] = $this->request->get['moduleid'];
+		@$moduleid = $this->request->get['moduleid'];
+		@$sitemapid = $this->request->get['sitemapid'];
+		@$mediaid = $this->request->get['mediaid'];
+		@$siteid = $this->user->getSiteId();
+		@$page = $this->request->get['page'];
 		
 		$this->load->language($moduleid);
 		$this->data = array_merge($this->data, $this->language->getData());
@@ -140,7 +140,7 @@ class ControllerCorePostlist extends Controller
 		$rows = $this->model_core_media->getList($where);
 		
 		//Page
-		$page = $this->request->get['page'];		
+		@$page = $this->request->get['page'];		
 		$x=$page;		
 		$limit = 20;
 		$total = count($rows); 
@@ -154,7 +154,7 @@ class ControllerCorePostlist extends Controller
 		$page   = $pager->page;
 		$this->data['medias'] = array();
 		
-		for($i=$offset;$i < $offset + $limit && count($rows[$i])>0;$i++)
+		for($i=$offset;$i < $offset + $limit && count(@$rows[$i])>0;$i++)
 		{
 			$this->data['medias'][$i] = $rows[$i];
 			$user = $this->model_core_user->getItem($this->data['medias'][$i]['userid']);

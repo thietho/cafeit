@@ -161,9 +161,9 @@ class ControllerModuleProductlist extends Controller
 		$this->data['sitemap']['breadcrumb'] = $this->model_core_sitemap->getBreadcrumb($sitemapid, $siteid);
 		if($headername!="")
 			$this->data['sitemap']['sitemapname'] = $headername;
-		$this->document->title .= " - ".$this->data['sitemap']['sitemapname'];
+		@$this->document->title .= " - ".$this->data['sitemap']['sitemapname'];
 		
-		$step = (int)$this->request->get['step'];
+		@$step = (int)$this->request->get['step'];
 		$to = $count;
 		
 		//Get list
@@ -181,7 +181,7 @@ class ControllerModuleProductlist extends Controller
 		$queryoptions['mediatype'] = '%';
 		$queryoptions['refersitemap'] = $listsitemap;
 		
-		$order = $_GET['order'];
+		@$order = $_GET['order'];
 		$orderby = "";
 		switch($order)
 		{
@@ -197,67 +197,66 @@ class ControllerModuleProductlist extends Controller
 			default:
 				$orderby = " ORDER BY `updateddate` DESC";
 		}
-		if($mediaid == "")
-		{
-			if(count($medias)==0)
-			{
-				//$medias = $this->model_core_media->getPaginationList($queryoptions, $step, $to);
-				$medias = $this->model_core_media->getPaginationList($queryoptions,0,0,$orderby);
-			}
-			
-			
-			$this->data['medias'] = array();
-			
 		
-			$index = -1;
-			foreach($medias as $media)
+		if(count($medias)==0)
+		{
+			//$medias = $this->model_core_media->getPaginationList($queryoptions, $step, $to);
+			$medias = $this->model_core_media->getPaginationList($queryoptions,0,0,$orderby);
+		}
+		
+		
+		$this->data['medias'] = array();
+		
+	
+		$index = -1;
+		foreach($medias as $media)
+		{
+			$index += 1;
+			//$media = $medias[$i];
+			
+			$arr = $this->string->referSiteMapToArray($media['refersitemap']);
+			$sitemapid = $arr[0];
+			
+			$link = $this->document->createLink($sitemapid,$media['alias']);
+			
+			$imagethumbnail = "";
+			
+			if($media['imagepath'] != "" )
 			{
-				$index += 1;
-				//$media = $medias[$i];
-				
-				$arr = $this->string->referSiteMapToArray($media['refersitemap']);
-				$sitemapid = $arr[0];
-				
-				$link = $this->document->createLink($sitemapid,$media['alias']);
-				
-				$imagethumbnail = "";
-				
-				if($media['imagepath'] != "" )
-				{
-					$imagethumbnail = HelperImage::resizePNG($media['imagepath'], $template['width'], $template['height']);
-					$imagetpreview = HelperImage::resizePNG($media['imagepath'], $template['widthpreview'], $template['heightpreview']);
-				}
-				
-				$priceproduct = $this->model_core_media->getListByParent($media['mediaid']," AND mediatype = 'price' Order by position");
-				$price = $media['price'];
-				if($price == 0)
-				{
-					$price = $priceproduct[0]['price'];
-					$volume = $priceproduct[0]['title'];
-					
-				}
-				$properties = $this->string->referSiteMapToArray($media['groupkeys']);
-				$this->data['medias'][] = array(
-					'mediaid' => $media['mediaid'],
-					'title' => $media['title'],
-					'keyword' => $media['keyword'],
-					'summary' => $media['summary'],
-					'price' => $price,
-					'volume' => $volume,
-					'properties' => $properties,
-					'imagethumbnail' => $imagethumbnail,
-					'imagetpreview' => $imagetpreview,
-					'fileid' => $media['imageid'],
-					'statusdate' => $this->date->formatMySQLDate($media['statusdate'], 'longdate', "/"),
-					'link' => $link
-				);
-				
+				$imagethumbnail = HelperImage::resizePNG($media['imagepath'], $template['width'], $template['height']);
+				$imagetpreview = HelperImage::resizePNG($media['imagepath'], $template['widthpreview'], $template['heightpreview']);
 			}
 			
-			
+			$priceproduct = $this->model_core_media->getListByParent($media['mediaid']," AND mediatype = 'price' Order by position");
+			$price = $media['price'];
+			if($price == 0)
+			{
+				$price = $priceproduct[0]['price'];
+				$volume = $priceproduct[0]['title'];
+				
+			}
+			$properties = $this->string->referSiteMapToArray($media['groupkeys']);
+			$this->data['medias'][] = array(
+				'mediaid' => $media['mediaid'],
+				'title' => $media['title'],
+				'keyword' => $media['keyword'],
+				'summary' => $media['summary'],
+				'price' => $price,
+				'volume' => @$volume,
+				'properties' => $properties,
+				'imagethumbnail' => $imagethumbnail,
+				'imagetpreview' => $imagetpreview,
+				'fileid' => $media['imageid'],
+				'statusdate' => $this->date->formatMySQLDate($media['statusdate'], 'longdate', "/"),
+				'link' => $link
+			);
 			
 		}
-		$this->data['status'] = $template['status'];
+			
+			
+			
+		
+		@$this->data['status'] = $template['status'];
 		$this->id="news";
 		$this->template=$template['template'];
 		$this->render();
