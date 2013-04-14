@@ -23,7 +23,7 @@
             <p>
             	<label><?php echo $lbl_name ?></label><br />
             	<input type="text" id="sitemapname" name="sitemapname" value="<?php echo $sitemap['sitemapname']?>" class="text" size="80"/>
-                <?php echo $errors['sitemapname']?>
+                <?php echo @$errors['sitemapname']?>
             </p>
 
         	<p>
@@ -41,15 +41,15 @@ foreach($sitemapparent as $result)
 }
 ?>    
                 </select>
-                <?php echo $errors['sitemapparent']?>
+                <?php echo @$errors['sitemapparent']?>
             </p>
         
             <p>
             	<label><?php echo $text_sitemapid ?></label><br />
             	<input type="text" id="sitemapid" name="sitemapid" value="<?php echo $sitemap['sitemapid']?>" class="text" size="80"/>
-                <?php echo $errors['sitemapid']?>
+                <?php echo @$errors['sitemapid']?>
             </p>
-<?php if($sitemap[id]==""){ ?>
+<?php if(@$sitemap[id]==""){ ?>
 	<script>
 		$('#sitemapname').change(function(e) {
 		

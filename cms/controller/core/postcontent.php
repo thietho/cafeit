@@ -8,7 +8,7 @@ class ControllerCorePostcontent extends Controller
 		$this->data['permissionEdit'] = true;
 		$this->data['permissionDelete'] = true;
 		
-		$sitemapid = $this->request->get['sitemapid'];
+		@$sitemapid = $this->request->get['sitemapid'];
 		
 		if(!$this->user->hasPermission($sitemapid, "access"))
 		{
@@ -56,7 +56,7 @@ class ControllerCorePostcontent extends Controller
 	private function getForm()
 	{
 		$this->load->model("core/media");
-		$mediaid = $this->request->get['mediaid'];
+		@$mediaid = $this->request->get['mediaid'];
 		if($mediaid)
 		{
 			if(!$this->data['permissionEdit'])
@@ -294,8 +294,8 @@ class ControllerCorePostcontent extends Controller
 		$this->data['keyword'] = $this->data['post']['keyword'];
 		$this->data['author'] = $this->data['post']['author'];
 		$this->data['source'] = $this->data['post']['source'];
-		$this->data['eventdate'] = $this->data['post']['eventdate'];
-		$this->data['eventtime'] = $this->data['post']['eventtime'];
+		@$this->data['eventdate'] = $this->data['post']['eventdate'];
+		@$this->data['eventtime'] = $this->data['post']['eventtime'];
 		$this->data['refersitemap'] = $this->data['post']['refersitemap'];
 		$this->data['imageid'] = $this->data['post']['imageid'];
 		$this->data['imagepath'] = $this->data['post']['imagepath'];
@@ -311,7 +311,7 @@ class ControllerCorePostcontent extends Controller
 		$listfile = $this->model_core_media->getInformation($this->data['mediaid'], "attachment");
 		$listfileid=array();
 		if($listfile)
-			$listfileid=split(",",$listfile);
+			@$listfileid=split(",",$listfile);
 		$this->data['attachment']=array();
 		foreach($listfileid as $key => $item)
 		{
@@ -352,11 +352,11 @@ class ControllerCorePostcontent extends Controller
 		$this->load->model("core/sitemap");
 		$route = $this->getRoute();
 		$this->data['post'] = $this->request->post;
-		$sitemapid = $this->request->get['sitemapid'];
-		$mediaid = $this->request->get['mediaid'];
+		@$sitemapid = $this->request->get['sitemapid'];
+		@$mediaid = $this->request->get['mediaid'];
 		$siteid = $this->user->getSiteId();
 			
-		$sitemapid = $this->request->get['sitemapid'];
+		@$sitemapid = $this->request->get['sitemapid'];
 		
 		$data = $this->data['post'];
 		
@@ -403,7 +403,7 @@ class ControllerCorePostcontent extends Controller
 			{
 				exit("There are some problems, please contact administrator!");
 			}
-			if($data['eventdate']!="")
+			if(@$data['eventdate']!="")
 			{
 				$this->model_core_media->updateCol($data['mediaid'],'eventdate',$this->date->formatViewDate($data['eventdate']));	
 				$this->model_core_media->updateCol($data['mediaid'],'eventtime',$data['eventtime']);
@@ -512,7 +512,7 @@ class ControllerCorePostcontent extends Controller
 	private function getProperties($data)
 	{
 		$arr = $data['loaisp'];
-		$arr['nhomhuong'] = $data['nhomhuong'];
+		@$arr['nhomhuong'] = $data['nhomhuong'];
 		$arr['nhanhieu'] = $data['nhanhieu'];
 		$groupkeys = $this->string->arrayToString($arr);
 		return $groupkeys;	

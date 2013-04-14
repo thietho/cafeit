@@ -18,7 +18,7 @@
             <option value="az">Tên: A-Z</option>
         </select>
 <script language="javascript">
-$('#order').val('<?php echo $_GET["order"]?>');
+$('#order').val('<?php echo @$_GET["order"]?>');
 </script>
         <div class="clearer">&nbsp;</div>
         
