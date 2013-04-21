@@ -59,12 +59,11 @@ class ModelCoreSitemap extends Model
 		return $query->row;
 	}
 	
-	public function getList($siteid, $where = "")
+	public function getList($siteid, $where = "",$order = " ORDER BY position, siteid, id")
 	{
 		$query = $this->db->query("Select `sitemap`.* 
 									from `sitemap`
-									where `sitemap`.status not like 'Delete' AND siteid = '".$siteid."' ".$where.
-									" ORDER BY position, siteid, id"
+									where `sitemap`.status not like 'Delete' AND siteid = '".$siteid."' ".$where.$order						
 									);
 		return $query->rows;
 	}
@@ -158,7 +157,7 @@ class ModelCoreSitemap extends Model
 		$arr=array();
 		$row=$this->getItem($id, $siteid);
 		array_push($arr,$row);
-		while(@$row['sitemapparent']!="")
+		while($row['sitemapparent']!="")
 		{
 			$row=$this->getItem($row['sitemapparent'], $siteid);
 			array_push($arr,$row);
@@ -172,8 +171,8 @@ class ModelCoreSitemap extends Model
 		$strBreadcrumb = "<a href='?route=common/dashboard'>Trang chủ</a>";
 		for($i=count($data)-1;$i>$end;$i--)
 		{
-			@$link = "".$data[$i]['sitemapname']."";
-			if(@$data[$i]['modulepath'] != "")
+			$link = "".$data[$i]['sitemapname']."";
+			if($data[$i]['modulepath'] != "")
 				$link='<a target="_blank" href="'.$data[$i]['modulepath']."&sitemapid=".$data[$i]['sitemapid'].'" title="[Detail]">'.$data[$i]['sitemapname'].'</a>';
 			$strBreadcrumb .= " >> ".$link; 
 		}
@@ -317,9 +316,9 @@ class ModelCoreSitemap extends Model
 		
 		$rows = $this->getListByParent($id, $siteid);
 		
-		@$arr['countchild'] = count(rows);
+		$arr['countchild'] = count(rows);
 		
-		if(@$arr['sitemapparent'] != "") $parentpath .= "-".$arr['sitemapparent'];
+		if($arr['sitemapparent'] != "") $parentpath .= "-".$arr['sitemapparent'];
 		
 		if($id!="")
 		{

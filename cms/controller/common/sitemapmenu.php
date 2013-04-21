@@ -9,7 +9,7 @@ class ControllerCommonSitemapmenu extends Controller
 		
 		$this->data = array_merge($this->data, $this->language->getData());
 		
-		@$this->data['safemode'] = $this->session->data['safemode'];
+		$this->data['safemode'] = $this->session->data['safemode'];
 		
 		$this->data['menu'] = $this->getMenu("");
 		$this->data['addon'] = $this->getAddOnMenu("");
@@ -19,6 +19,13 @@ class ControllerCommonSitemapmenu extends Controller
 										"core/media" => $this->data['menu_media'],
 										"core/file" => $this->data['menu_file'],
 								 		"core/sitemap" => $this->data['menu_sitemap'],
+										"addon/phieuchi" => "Phiếu chi",
+										"addon/phieuthu" => "Phiếu thu",
+										"quanlykho/donvitinh" => "Đơn vị tính",
+										"quanlykho/nhanvien" => "Nhân viên",
+										"quanlykho/nhacungcap" => "Nhà cung cấp",
+										"quanlykho/phieunhap" => "Phiếu nhập",
+										"quanlykho/phieuxuat" => "Phiếu bán hàng",
 										"addon/order" => "Order management <span id='orderwarring'></span>",
 								 		"core/member" => "Member management",
 										"core/message" => $this->data['message'],
