@@ -61,7 +61,7 @@
                       
                       <td><?php echo $sitemap['tab']?>
                  <?php
-                if($this->user->getUserTypeId()=='admin')
+                if($this->session->data['userid']=='admin')
                 {
         ?>
                         <input class="inputchk" type="checkbox" name="delete[<?php echo $sitemap['sitemapid']?>]" value="<?php echo $sitemap['sitemapid']?>" >
@@ -73,7 +73,7 @@
                       <td><?php echo $sitemap['modulename']?></td>
                       <td><?php echo $sitemap['status']?></td>
         <?php
-                if($this->user->getUserTypeId()=='admin')
+                if($this->session->data['userid']=='admin')
                 {
         ?>
                       <td>

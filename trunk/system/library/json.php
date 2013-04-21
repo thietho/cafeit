@@ -162,11 +162,11 @@ final class JSON
         $end = -1;
         $start = -1;
         while ( $i < strlen($e) && $end == -1 ) {
-            switch( @$e[$i] ) {
+            switch( $e[$i] ) {
                 /* objects */
                 case "{":
                 case "[":
-                    @$_tag = $e[$i]; 
+                    $_tag = $e[$i]; 
                     $_endtag = $_tag == "{" ? "}" : "]";
                     if ( $state == IN_NOWHERE ) {
                         $start = $i+1;

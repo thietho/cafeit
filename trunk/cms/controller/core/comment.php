@@ -40,7 +40,7 @@ class ControllerCoreComment extends Controller
 	{
 		
 		$where = "";
-		@$status = $this->request->get['status'];
+		$status = $this->request->get['status'];
 		$mediaid = $this->request->get['mediaid'];
 		if($status)
 			$where = " AND status = '".$status."'";

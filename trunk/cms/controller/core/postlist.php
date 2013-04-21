@@ -123,24 +123,32 @@ class ControllerCorePostlist extends Controller
 		$this->load->model("core/sitemap");
 		$this->load->helper('image');
 		
-		@$this->data['route'] = $this->request->get['moduleid'];
-		@$moduleid = $this->request->get['moduleid'];
-		@$sitemapid = $this->request->get['sitemapid'];
-		@$mediaid = $this->request->get['mediaid'];
-		@$siteid = $this->user->getSiteId();
-		@$page = $this->request->get['page'];
+		$this->data['route'] = $this->request->get['moduleid'];
+		$moduleid = $this->request->get['moduleid'];
+		$sitemapid = $this->request->get['sitemapid'];
+		$mediaid = $this->request->get['mediaid'];
+		$siteid = $this->user->getSiteId();
+		$page = $this->request->get['page'];
+		
+		$code = $this->request->get['code'];
+		$sizes = $this->request->get['sizes'];
+		$title = $this->request->get['title'];
 		
 		$this->load->language($moduleid);
 		$this->data = array_merge($this->data, $this->language->getData());
 		//Get list
-		
-		
 		$where = " AND refersitemap like '%".$sitemapid."%'";
+		if($code)
+			$where .= " AND code like '".$code."%'";
+		if($sizes)
+			$where .= " AND sizes like '%".$sizes."%'";
+		if($title)
+			$where .= " AND title like '%".$title."%'";
 		$where .= " Order by position, statusdate DESC";
 		$rows = $this->model_core_media->getList($where);
 		
 		//Page
-		@$page = $this->request->get['page'];		
+		$page = $this->request->get['page'];		
 		$x=$page;		
 		$limit = 20;
 		$total = count($rows); 
@@ -154,7 +162,7 @@ class ControllerCorePostlist extends Controller
 		$page   = $pager->page;
 		$this->data['medias'] = array();
 		
-		for($i=$offset;$i < $offset + $limit && count(@$rows[$i])>0;$i++)
+		for($i=$offset;$i < $offset + $limit && count($rows[$i])>0;$i++)
 		{
 			$this->data['medias'][$i] = $rows[$i];
 			$user = $this->model_core_user->getItem($this->data['medias'][$i]['userid']);
@@ -168,7 +176,17 @@ class ControllerCorePostlist extends Controller
 				
 			}
 			
-			
+			$mediaid = $this->data['medias'][$i]['mediaid'];
+			$this->data['medias'][$i]['tonkho'] = $this->model_core_media->getTonKho($mediaid);
+			$data_price =$this->model_core_media->getListByParent($mediaid," AND mediatype = 'price' Order by position");
+			if(count($data_price))
+			{
+				foreach($data_price as $key => $price)
+				{
+					$data_price[$key]['tonkho'] = $this->model_core_media->getTonKho($price['mediaid']);
+				}
+				$this->data['medias'][$i]['prices'] = $data_price;
+			}
 			$this->data['medias'][$i]['link_edit'] = $this->url->http($sitemap['moduleid'].'&sitemapid='.$sitemap['sitemapid'].'&mediaid='.$this->data['medias'][$i]['mediaid']);
 			$this->data['medias'][$i]['text_edit'] = "Edit";	
 			

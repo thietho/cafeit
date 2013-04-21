@@ -3,45 +3,19 @@ class ControllerCorePostcontent extends Controller
 {
 	function __construct() 
 	{
-		$this->data['permissionAccess'] = true;
-		$this->data['permissionAdd'] = true;
-		$this->data['permissionEdit'] = true;
-		$this->data['permissionDelete'] = true;
-		
-		@$sitemapid = $this->request->get['sitemapid'];
-		
-		if(!$this->user->hasPermission($sitemapid, "access"))
-		{
-			$this->data['permissionAccess'] = false;
-		}
-		if(!$this->user->hasPermission($sitemapid, "add"))
-		{
-			$this->data['permissionAdd'] = false;
-		}
-		if(!$this->user->hasPermission($sitemapid, "edit"))
-		{
-			$this->data['permissionEdit'] = false;
-		}
-		if(!$this->user->hasPermission($sitemapid, "delete"))
-		{
-			$this->data['permissionDelete'] = false;
-		}
-		
 	 	$this->load->model("core/user");
 		$this->load->model("core/media");
 		$this->load->model("core/sitemap");
 		$this->load->model("core/file");
 		$this->load->model("core/category");
 		$this->load->helper('image');
+		
+		$this->load->model("quanlykho/donvitinh");
+		$this->data['donvitinh'] = $this->model_quanlykho_donvitinh->getList();
    	}
 	
 	function index()
 	{	
-		if(!$this->data['permissionAccess'])
-			$this->response->redirect("?route=common/permission");
-		
-		
-		
 		if (!$this->user->isLogged()) {
 			$this->redirect($this->url->https('page/index'));
 		}
@@ -56,17 +30,8 @@ class ControllerCorePostcontent extends Controller
 	private function getForm()
 	{
 		$this->load->model("core/media");
-		@$mediaid = $this->request->get['mediaid'];
-		if($mediaid)
-		{
-			if(!$this->data['permissionEdit'])
-				$this->response->redirect("?route=common/permission");
-		}
-		else
-		{
-			if(!$this->data['permissionAdd'])
-				$this->response->redirect("?route=common/permission");
-		}
+		$mediaid = $this->request->get['mediaid'];
+		
 		$route = $this->getRoute();
 		$sitemapid = $this->request->get['sitemapid'];
 		
@@ -173,6 +138,7 @@ class ControllerCorePostcontent extends Controller
 		$this->data['hasTabComment'] = false;
 		
 		//Define product
+		$this->data['hasCode'] = false;
 		$this->data['hasPrice'] = false;
 		$this->data['hasSubInfor'] = false;
 		//Video
@@ -199,6 +165,7 @@ class ControllerCorePostcontent extends Controller
 		
 		if($route == "module/product")
 		{
+			$this->data['hasCode'] = true;
 			$this->data['hasProperties'] = true;
 			$this->data['hasPrice'] = true;
 			$this->data['hasSubInfor'] = false;
@@ -283,7 +250,7 @@ class ControllerCorePostcontent extends Controller
 			$this->data['imagethumbnail'] = HelperImage::resizePNG($this->data['post']['imagepath'], 200, 200);
 		}
 		
-		$this->data['mediaid'] = $this->data['post']['mediaid'];
+		/*$this->data['mediaid'] = $this->data['post']['mediaid'];
 		$this->data['mediatype'] = $this->data['post']['mediatype'];
 		$this->data['title'] = $this->data['post']['title'];
 		$this->data['summary'] = $this->data['post']['summary'];
@@ -294,8 +261,8 @@ class ControllerCorePostcontent extends Controller
 		$this->data['keyword'] = $this->data['post']['keyword'];
 		$this->data['author'] = $this->data['post']['author'];
 		$this->data['source'] = $this->data['post']['source'];
-		@$this->data['eventdate'] = $this->data['post']['eventdate'];
-		@$this->data['eventtime'] = $this->data['post']['eventtime'];
+		$this->data['eventdate'] = $this->data['post']['eventdate'];
+		$this->data['eventtime'] = $this->data['post']['eventtime'];
 		$this->data['refersitemap'] = $this->data['post']['refersitemap'];
 		$this->data['imageid'] = $this->data['post']['imageid'];
 		$this->data['imagepath'] = $this->data['post']['imagepath'];
@@ -307,11 +274,11 @@ class ControllerCorePostcontent extends Controller
 		$this->data['status'] = $this->data['post']['status'];
 		$this->data['statusdate'] = $this->data['post']['statusdate'];
 		$this->data['statusby'] = $this->data['post']['statusby'];
-		$this->data['updateddate'] = $this->data['post']['updateddate'];
+		$this->data['updateddate'] = $this->data['post']['updateddate'];*/
 		$listfile = $this->model_core_media->getInformation($this->data['mediaid'], "attachment");
 		$listfileid=array();
 		if($listfile)
-			@$listfileid=split(",",$listfile);
+			$listfileid=split(",",$listfile);
 		$this->data['attachment']=array();
 		foreach($listfileid as $key => $item)
 		{
@@ -352,11 +319,11 @@ class ControllerCorePostcontent extends Controller
 		$this->load->model("core/sitemap");
 		$route = $this->getRoute();
 		$this->data['post'] = $this->request->post;
-		@$sitemapid = $this->request->get['sitemapid'];
-		@$mediaid = $this->request->get['mediaid'];
+		$sitemapid = $this->request->get['sitemapid'];
+		$mediaid = $this->request->get['mediaid'];
 		$siteid = $this->user->getSiteId();
 			
-		@$sitemapid = $this->request->get['sitemapid'];
+		$sitemapid = $this->request->get['sitemapid'];
 		
 		$data = $this->data['post'];
 		
@@ -403,7 +370,7 @@ class ControllerCorePostcontent extends Controller
 			{
 				exit("There are some problems, please contact administrator!");
 			}
-			if(@$data['eventdate']!="")
+			if($data['eventdate']!="")
 			{
 				$this->model_core_media->updateCol($data['mediaid'],'eventdate',$this->date->formatViewDate($data['eventdate']));	
 				$this->model_core_media->updateCol($data['mediaid'],'eventtime',$data['eventtime']);
@@ -512,7 +479,7 @@ class ControllerCorePostcontent extends Controller
 	private function getProperties($data)
 	{
 		$arr = $data['loaisp'];
-		@$arr['nhomhuong'] = $data['nhomhuong'];
+		$arr['nhomhuong'] = $data['nhomhuong'];
 		$arr['nhanhieu'] = $data['nhanhieu'];
 		$groupkeys = $this->string->arrayToString($arr);
 		return $groupkeys;	
@@ -580,23 +547,25 @@ class ControllerCorePostcontent extends Controller
 		$this->load->helper('image');
 		$mediaid = $this->request->get['mediaid'];
 		$this->data['child']=$this->model_core_media->getListByParent($mediaid," AND mediatype = 'price' Order by position");
-		foreach($this->data['child'] as $key => $item)
-		{
-			$para = $this->string->referSiteMapToArray($item['summary']);
-			foreach($para as $val)
-			{
-				$ar = split("=",$val);
-				$this->data['child'][$key][$ar[0]] = $ar[1];	
-			}
-			$media = $this->model_core_media->getItem($this->data['child'][$key]['makhuyenmai']);
-			$this->data['child'][$key]['tenkhuyenmai'] = $media['title'];
-			$this->data['child'][$key]['mainprice'] = ($this->data['child'][$key]['khuyenmai']!=0)?$this->data['child'][$key]['khuyenmai']:$this->data['child'][$key]['gia'];
-		}
+		
 		$this->id='post';
 		$this->template='core/price_list.tpl';	
 		$this->render();
 	}
 	
+	public function getPriceFrom()
+	{
+		$this->load->model("core/media");
+		$this->load->helper('image');
+		$mediaid = $this->request->get['mediaid'];
+		$media=$this->model_core_media->getItem($mediaid);
+		
+		$this->data['media'] = $media;
+		
+		$this->id='post';
+		$this->template="core/post_form_price.tpl";
+		$this->render();
+	}
 	public function getPrice()
 	{
 		$this->load->model("core/media");
