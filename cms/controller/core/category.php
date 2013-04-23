@@ -4,7 +4,25 @@ class ControllerCoreCategory extends Controller
 	private $error = array();
    	function __construct() 
 	{
-		
+		if(!$this->user->hasPermission($this->getRoute(), "access"))
+		{
+			$this->response->redirect("?route=common/permission");
+		}
+		$this->data['permissionAdd'] = true;
+		$this->data['permissionEdit'] = true;
+		$this->data['permissionDelete'] = true;
+		if(!$this->user->hasPermission($this->getRoute(), "add"))
+		{
+			$this->data['permissionAdd'] = false;
+		}
+		if(!$this->user->hasPermission($this->getRoute(), "edit"))
+		{
+			$this->data['permissionEdit'] = false;
+		}
+		if(!$this->user->hasPermission($this->getRoute(), "delete"))
+		{
+			$this->data['permissionDelete'] = false;
+		}
 		
 	 	$this->load->model("core/user");
 		$this->load->model("core/media");
@@ -28,14 +46,22 @@ class ControllerCoreCategory extends Controller
 	
 	public function insert()
 	{
-	
+		if(!$this->user->hasPermission($this->getRoute(), "add"))
+		{
+			$this->response->redirect("?route=common/permission");
+		}
 		
     	$this->getForm();
 	}
 	
 	public function update()
 	{
-	
+		if(!$this->user->hasPermission($this->getRoute(), "edit"))
+		{
+			$this->response->redirect("?route=common/permission");
+		}
+		else
+		{
 			//$this->load->language('core/category');
 			//$this->data = array_merge($this->data, $this->language->getData());
 			
@@ -46,7 +72,7 @@ class ControllerCoreCategory extends Controller
 		
 		
 			$this->getForm();
-	
+		}
 		
   	}
 	
