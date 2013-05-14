@@ -27,20 +27,21 @@ class ControllerThongkeThuchi extends Controller
 		
 		$tungay = $this->date->formatViewDate($data['tungay']);
 		$denngay = $this->date->formatViewDate($data['denngay']);
+		$this->data = $this->xuly($tungay,$denngay);
 		if($tungay)
 		{
-			$data_kytruoc = $this->xuly("",$tungay);
+			$data_kytruoc = $this->xuly("",$this->date->addday($tungay, -1));
 			$this->data['tonkytruoc'] = $data_kytruoc['tontrongky'];
 		}
 		else
 		{
 			$this->data['tonkytruoc'] = 0;
 		}
-		$data_trongky = $this->xuly($tungay,$denngay);
-		$this->data['data_thuchi'] = $data_trongky['data_thuchi'];
+		
+		/*$this->data['data_thuchi'] = $data_trongky['data_thuchi'];
 		$this->data['tongthu'] = $data_trongky['tongthu'];
 		$this->data['tongchi'] = $data_trongky['tongchi'];
-		$this->data['tontrongky'] = $data_trongky['tontrongky'];
+		$this->data['tontrongky'] = $data_trongky['tontrongky'];*/
 		$this->id='content';
 		$this->template="thongke/thuchi_thongke.tpl";
 		
@@ -150,6 +151,8 @@ class ControllerThongkeThuchi extends Controller
 		$tongthu = 0;
 		$tongchi = 0;
 		$data_thuchi = array();
+		$arr_taikhoanthu = array();
+		$arr_taikhoanchi = array();
 		foreach($arrdate as $date)
 		{
 			//Thu
@@ -160,11 +163,13 @@ class ControllerThongkeThuchi extends Controller
 				{
 					$arr = array(
 								'maphieu' => $item['sophieu'],
-								'loai' => "Phiếu thu",
+								'loai' => "Phiếu thu - " . $this->document->getCategory($item['taikhoanthuchi'])." - ". $item['tenkhachhang'] ." - ".$item['lydo'],
+								'taikhoanthuchi	' => $item['taikhoanthuchi'],
 								'sotien' => $item['sotien']
 								);
 					$tongthu += $item['sotien'];
 					$data_thuchi[$date]['thu'][] = $arr;
+					$arr_taikhoanthu[$item['taikhoanthuchi']] += $item['sotien'];
 				}
 			}
 			//Ban hang
@@ -176,10 +181,12 @@ class ControllerThongkeThuchi extends Controller
 					$arr = array(
 								'maphieu' => $item['maphieu'],
 								'loai' => "Phiếu bán hàng",
-								'sotien' => $item['tongtien']
+								'taikhoanthuchi	' => 'thubanhang',
+								'sotien' => $item['thanhtoan']
 								);
 					$tongthu += $item['tongtien'];
 					$data_thuchi[$date]['thu'][] = $arr;
+					$arr_taikhoanthu['thubanhang'] += $item['tongtien'];
 				}
 			}
 			
@@ -191,11 +198,13 @@ class ControllerThongkeThuchi extends Controller
 				{
 					$arr = array(
 								'maphieu' => $item['sophieu'],
-								'loai' => "Phiếu chi",
+								'loai' => "Phiếu chi - ". $this->document->getCategory($item['taikhoanthuchi'])." - ". $item['tenkhachhang']." - ".$item['lydo'],
+								'taikhoanthuchi	' => $item['taikhoanthuchi'],
 								'sotien' => $item['sotien']
 								);
 					$tongchi += $item['sotien'];
 					$data_thuchi[$date]['chi'][] = $arr;
+					$arr_taikhoanchi[$item['taikhoanthuchi']] += $item['sotien'];
 				}
 			}
 			//Nhap hang
@@ -207,10 +216,12 @@ class ControllerThongkeThuchi extends Controller
 					$arr = array(
 								'maphieu' => $item['maphieu'],
 								'loai' => "Phiếu phập hàng",
-								'sotien' => $item['tongtien']
+								'taikhoanthuchi	' => 'chiphinhaphang',
+								'sotien' => $item['thanhtoan']
 								);
 					$tongchi += $item['tongtien'];
 					$data_thuchi[$date]['chi'][] = $arr;
+					$arr_taikhoanthu['chiphinhaphang'] += $item['tongtien'];
 				}
 			}
 		}
@@ -219,7 +230,9 @@ class ControllerThongkeThuchi extends Controller
 						'data_thuchi' => $data_thuchi,
 						'tongthu' => $tongthu,
 						'tongchi' => $tongchi,
-						'tontrongky' => $tongthu - $tongchi
+						'tontrongky' => $tongthu - $tongchi,
+						'taikhoanthu' => $arr_taikhoanthu,
+						'taikhoanchi' => $arr_taikhoanchi
 						);
 		return $datakq;
 		

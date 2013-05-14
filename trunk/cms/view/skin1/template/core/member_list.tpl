@@ -88,7 +88,7 @@ function deleteUser()
 					if(data!="")
 					{
 						alert(data)
-						linkto("?<?php echo $refres?>")
+						window.location.reload();
 					}
 				}
 		);
@@ -154,6 +154,9 @@ function viewCongNo(id)
 					buttons: {
 						'Đóng': function() {
 							$( this ).dialog( "close" );
+							
+						},
+						'Thanh toán công nợ':function(){
 							
 						},
 						'In': function(){
