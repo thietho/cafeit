@@ -99,9 +99,16 @@
                 <?php } ?>
                 <?php if($order['status'] == 'confirmed'){ ?>
                 <p>
-                	<input type="button" class="button" onclick="order.completed('<?php echo $order['orderid']?>')" value="Đã giao hàng"/>
+                	<input type="button" class="button" onclick="payment()" value="Đã giao hàng"/>
                     <input type="button" class="button" onclick="order.printBill('<?php echo $order['orderid']?>')" value="In hóa đơn"/>
                     <input type="button" class="button" onclick="order.cancel('<?php echo $order['orderid']?>')" value="Hủy"/>
+                </p>
+                <p id="frm_thanhtoan" style="display:none">
+                	<label>Tổng tiền:</label> <span id="tongtien"></span><br />
+                    <label>Thanh toán:</label> <input type="text" class="text number" id="thanhtoan" name="thanhtoan"/>
+                    <input type="button" class="button" id="btnTraHet" value="Trả hết"/>
+                    <input type="button" class="button" id="btnThanhToan" value="Thanh toán"/>
+                    
                 </p>
                 <?php } ?>
                 <?php if($order['status'] == 'cancel'){ ?>
@@ -134,8 +141,9 @@
                             <th><?php echo $column_productname?></th>
                             <th><?php echo $column_productimage?></th>
                             <th><?php echo $column_productqty?></th>
-                            <th>Price</th>
-                            <th>Sub total</th>
+                            <th>Đơn vị</th>
+                            <th>Giá</th>
+                            <th>Thành tiền</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -149,6 +157,7 @@
                             <td><?php echo $item['title']?></td>
                             <td><?php echo $item['imagepreview']?></td>
                             <td class="number"><?php echo $this->string->numberFormate($item['quantity'])?></td>
+                            <td><?php echo $this->document->getDonViTinh($item['unit'])?></td>
                             <td class="number"><?php echo $this->string->numberFormate($item['price'])?></td>
                             <td class="number"><?php echo $this->string->numberFormate($item['subtotal'])?></td>
                         </tr>
@@ -157,6 +166,7 @@
                     <tfoot>
                     	<tr>
                         	<td></td>
+                            <td></td>
                             <td></td>
                             <td></td>
                             <td></td>
@@ -170,4 +180,17 @@
     </div>
     
 </div>
+<script language="javascript">
+$('#btnTraHet').click(function(e) {
+    $('#thanhtoan').val("<?php echo $this->string->numberFormate($sum)?>");
+});
+$('#btnThanhToan').click(function(e) {
+    order.completed("<?php echo $order['orderid']?>",stringtoNumber($('#thanhtoan').val()));
+});
+function payment()
+{
+	$('#tongtien').html("<?php echo $this->string->numberFormate($sum)?>");
+	$('#frm_thanhtoan').show();
+}
+</script>
 
