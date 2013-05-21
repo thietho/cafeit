@@ -62,11 +62,11 @@ label
 
 <div id="main-content">
 	<center>
-		<p style="font-size:1.5em;font-weight:bold">Mylanbeauty.net</p>
-        Địa chỉ: 193 Tuy Lý Vương, P.12, Q.8, Tp.HCM<br />
+		<p style="font-size:1.5em;font-weight:bold">YẾN NHI COMPUTER</p>
+        Địa chỉ: 50/54 Mai Văn Vĩnh.P Tân Kiểng.Q7.TP HCM<br />
         ĐT: 0903 767 589<br />
-        Email: cosmetics@mylanbeauty.net<br />
-        Website: www.mylanbeauty.net
+        Email: cafeit141@gmail.com<br />
+        Website: www.yennhicomputer.com
         
     </center>
 <?php echo $content?>
