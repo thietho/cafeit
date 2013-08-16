@@ -69,10 +69,11 @@ class ControllerAddonBrand extends Controller
 		
 		$template = array(
 							  'template' => "module/product_list.tpl",
-							  'width' => 176,
-							  'height' =>176,
-							  'widthpreview' => 450,
-						 	  'heightpreview' =>450
+							  'width' => 147,
+							  'height' =>147,
+							  'paging' => true,
+							  'widthpreview' => 280,
+						 	  'heightpreview' =>280
 							  );
 		$arr = array("",20,$header,$template,$medias);
 		$this->data['output'] = $this->loadModule('module/productlist','index',$arr);
