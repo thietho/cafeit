@@ -30,7 +30,7 @@ class ModelCoreMedia extends ModelCoreFile
 		{
 			$sql .= $order." Limit ".$from.",".$to;
 		}
-		
+		//echo $sql."<br>";
 		$query = $this->db->query($sql);
 		return $query->rows;
 	}

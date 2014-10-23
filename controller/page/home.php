@@ -126,20 +126,19 @@ class ControllerPageHome extends Controller
 	}
 	
 	function getProduct($status)
-	{
-		$this->load->model('core/sitemap');
-		$this->load->model('core/media');
-		$siteid = $this->member->getSiteId();
-		$sitemaps = $this->model_core_sitemap->getListByModule("module/product", $siteid);
-		$arrsitemapid = $this->string->matrixToArray($sitemaps,"sitemapid");
-		$queryoptions = array();
-		$queryoptions['mediaparent'] = '%';
-		$queryoptions['mediatype'] = '%';
-		$options['refersitemap'] = $arrsitemapid;
-		$options['groupkeys'] = $status;
-		$data = $this->model_core_media->getPaginationList($options, $step=0, $to=9);
-		
-		return $data;
-	}
+    {
+        $this->load->model('core/media');
+        //$siteid = $this->member->getSiteId();
+        //$sitemaps = $this->model_core_sitemap->getListByModule("module/product", $siteid);
+        //$arrsitemapid = $this->string->matrixToArray($sitemaps,"sitemapid");
+        $queryoptions = array();
+        $queryoptions['mediaparent'] = '';
+        $queryoptions['mediatype'] = 'module/product';
+        $queryoptions['refersitemap'] = '%';
+        $queryoptions['groupkeys'] = $status;
+        $data = $this->model_core_media->getPaginationList($queryoptions, $step = 0, $to = 20);
+
+        return $data;
+    }
 }
 ?>
